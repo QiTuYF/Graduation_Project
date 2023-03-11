@@ -26,6 +26,10 @@ guaduationproject\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flas
 guaduationproject\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 guaduationproject\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
 guaduationproject\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+guaduationproject\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 guaduationproject\main.o: ../Core/Inc/i2c.h
+guaduationproject\main.o: ../Core/Inc/usart.h
 guaduationproject\main.o: ../Core/Inc/gpio.h
 guaduationproject\main.o: ../Core/Inc/oled.h
+guaduationproject\main.o: ../Core/Inc/dht11.h
+guaduationproject\main.o: D:\Directory\keil5\directory\MDKDir\ARM\ARMCC\Bin\..\include\stdio.h

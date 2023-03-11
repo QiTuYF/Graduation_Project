@@ -3,8 +3,10 @@
 "guaduationproject\main.o"
 "guaduationproject\gpio.o"
 "guaduationproject\i2c.o"
+"guaduationproject\usart.o"
 "guaduationproject\stm32f1xx_it.o"
 "guaduationproject\stm32f1xx_hal_msp.o"
+"guaduationproject\dht11.o"
 "guaduationproject\stm32f1xx_hal_gpio_ex.o"
 "guaduationproject\stm32f1xx_hal_i2c.o"
 "guaduationproject\stm32f1xx_hal.o"
@@ -19,9 +21,10 @@
 "guaduationproject\stm32f1xx_hal_exti.o"
 "guaduationproject\stm32f1xx_hal_tim.o"
 "guaduationproject\stm32f1xx_hal_tim_ex.o"
-"guaduationproject\system_stm32f1xx.o"
+"guaduationproject\stm32f1xx_hal_uart.o"
 "guaduationproject\startup_stm32f103xb.o"
---strict --scatter "GuaduationProject\GuaduationProject.sct"
+"guaduationproject\system_stm32f1xx.o"
+--library_type=microlib --strict --scatter "GuaduationProject\GuaduationProject.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "./GuaduationProject/\GuaduationProject.map" -o GuaduationProject\GuaduationProject.axf
