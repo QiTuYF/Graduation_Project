@@ -1,4 +1,7 @@
 #include "dht11.h"
+
+double temperature=0; 
+
 extern UART_HandleTypeDef huart1;
 /**
   * @brief  温湿度传感器主函数
@@ -101,6 +104,7 @@ unsigned char DHT11_READ_DATA(void)
         
         if(data[0] + data[1] + data[2] + data[3] == data[4])
         {
+			temperature = data[2]+data[3]*0.1;
             printf("当前湿度：%d.%d%%RH当前温度：%d.%d°C--",data[0],data[1],data[2],data[3]);
             return 1;                               //  数据校验通过
         }

@@ -23,6 +23,7 @@
 #include "gpio.h"
 #include "oled.h"
 #include "dht11.h"
+#include "stdio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -99,24 +100,33 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	 
+
+extern double temperature;	 
 	
 		
-	OLED_ShowString(0,0,(uint8_t *)"diploma project",16);	
-	OLED_ShowString(0,2,(uint8_t *)"Temprature:",16);
-	OLED_ShowString(120,2,(uint8_t *)"C",16);
-	OLED_ShowString(0,4,(uint8_t *)"Time:",16);
+	OLED_ShowString(0,0,(uint8_t *)"Welcome to my:",16);	
+	OLED_ShowString(0,3,(uint8_t *)"diploma project",16);
+	HAL_Delay(3000);
+	OLED_Clear();
+	
 //	OLED_ShowCHinese(0,3,0);//
 //	OLED_ShowCHinese(16,3,1);//
 //	OLED_ShowCHinese(32,3,2);//
 //	OLED_ShowCHinese(48,3,6);//	
 
-
+char tempra[4];
 
   while (1)
   {
     /* USER CODE END WHILE */
+	sprintf(tempra,"%.1f",temperature);
+	printf("%s\r\n",tempra);
 	DHT11();
+	OLED_ShowString(0,0,(uint8_t *)"diploma project",16);	
+	OLED_ShowString(0,2,(uint8_t *)"Temprature:",16);
+	OLED_ShowString(88,2,(uint8_t *)tempra,16);
+	OLED_ShowString(120,2,(uint8_t *)"c",16);
+	OLED_ShowString(0,4,(uint8_t *)"Time:",16);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
