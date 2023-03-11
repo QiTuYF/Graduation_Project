@@ -1,6 +1,16 @@
 Graduation Project
 主控：stm32f103c8t6
+
+OLED：
 PB6：i2c SCL
 PB7:  i2c SDA 
+
+
+DHT11：
+有孔面左到右： VCC    DATA(PB9)   空脚   GND
+
+
 PA9：Tx
 PA10：Rx
+
+
