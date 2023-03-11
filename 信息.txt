@@ -1,0 +1,5 @@
+主控：stm32f103c8t6
+PB6：i2c SCL
+PB7:  i2c SDA 
+PA9：Tx
+PA10：Rx
