@@ -101,8 +101,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-extern double temperature;	 
-extern uint32_t humydity;	
+	
 		
 	OLED_ShowString(0,0,(uint8_t *)"Welcome to my:",16);	
 	OLED_ShowString(0,3,(uint8_t *)"diploma project",16);
@@ -114,29 +113,22 @@ extern uint32_t humydity;
 //	OLED_ShowCHinese(32,3,2);//
 //	OLED_ShowCHinese(48,3,6);//	
 
-char tempra[4],humydi[3];
+//char tempra[4],humydi[3];
 
   while (1)
   {
     /* USER CODE END WHILE */
 	
-	//将温度、湿度转换为字符串
-	sprintf(tempra,"%.1f",temperature);
-	printf("%s\r\n",tempra);
-	sprintf(humydi,"%d",humydity);
-	sprintf(humydi,"%s%%",humydi);
-	printf("%s\r\n",humydi);
 	
 	//串口打印DHT11是否正常
 	DHT11();
 	
+	OLED_ShowString(0,0,(uint8_t *)"diploma project",16);
+	
 	//在OLED上显示温度湿度
-	OLED_ShowString(0,0,(uint8_t *)"diploma project",16);	
-	OLED_ShowString(0,2,(uint8_t *)"Temprature:",16);   //显示温度
-	OLED_ShowString(88,2,(uint8_t *)tempra,16);
-	OLED_ShowString(120,2,(uint8_t *)"c",16);
-	OLED_ShowString(0,4,(uint8_t *)"Humydity:",16);   //显示湿度
-	OLED_ShowString(72,4,(uint8_t *)humydi,16);
+	Show_temprature_humydity();
+	
+	//在OLED上显示时间
 	OLED_ShowString(0,6,(uint8_t *)"Time:",16);      //显示时间
     /* USER CODE BEGIN 3 */
   }

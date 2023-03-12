@@ -2,6 +2,7 @@
 
 double temperature=0; 
 uint32_t humydity=0;
+char tempra[4],humydi[3];
 
 extern UART_HandleTypeDef huart1;
 /**
@@ -181,3 +182,34 @@ void Coarse_delay_us(uint32_t us)
 		;
 	}
 } 
+
+
+/**
+  * @brief  将温湿度转换为字符串
+  * @param  void
+  * @retval 0/1
+  */
+void Sprintf_temprature_humydity(void)
+{
+	sprintf(tempra,"%.1f",temperature);
+	printf("%s\r\n",tempra);
+	sprintf(humydi,"%d",humydity);
+	sprintf(humydi,"%s%%",humydi);
+	printf("%s\r\n",humydi);	
+}  
+
+
+/**
+  * @brief  在OLED上显示温度湿度
+  * @param  void
+  * @retval 0/1
+  */
+void Show_temprature_humydity(void)
+{  	
+	Sprintf_temprature_humydity();
+	OLED_ShowString(0,2,(uint8_t *)"Temprature:",16);   //显示温度
+	OLED_ShowString(88,2,(uint8_t *)tempra,16);
+	OLED_ShowString(120,2,(uint8_t *)"c",16);
+	OLED_ShowString(0,4,(uint8_t *)"Humydity:",16);   //显示湿度
+	OLED_ShowString(72,4,(uint8_t *)humydi,16);
+}

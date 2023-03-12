@@ -30,3 +30,4 @@ guaduationproject\dht11.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr
 guaduationproject\dht11.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 guaduationproject\dht11.o: ../Core/Inc/gpio.h
 guaduationproject\dht11.o: D:\Directory\keil5\directory\MDKDir\ARM\ARMCC\Bin\..\include\stdio.h
+guaduationproject\dht11.o: ../Core/Inc/oled.h

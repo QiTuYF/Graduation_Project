@@ -6,6 +6,7 @@
 #include "gpio.h"
 #include "stdio.h"
 #include "stm32f1xx.h"
+#include "oled.h" 
  
 /* Private define ------------------------------------------------------------*/
 #define DHT11_PIN_SET   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,GPIO_PIN_SET)                                            //  …Ë÷√GPIOŒ™∏ﬂ
@@ -24,5 +25,8 @@ unsigned char DHT11_Check(void);
 static void DHT11_GPIO_MODE_SET(uint8_t mode);
  
 void Coarse_delay_us(uint32_t us);
+
+void Sprintf_temprature_humydity(void);
+void Show_temprature_humydity(void);
     
 #endif
