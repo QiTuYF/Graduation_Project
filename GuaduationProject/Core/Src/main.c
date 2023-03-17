@@ -129,7 +129,10 @@ int main(void)
 	Show_temprature_humydity();
 	
 	//在OLED上显示时间
-	OLED_ShowString(0,6,(uint8_t *)"Time:",16);      //显示时间
+//	OLED_ShowString(0,6,(uint8_t *)"Time:",16);      //显示时间
+	OLED_ShowCHinese(0,6,11);   //显示时间
+	OLED_ShowCHinese(16,6,12);
+	OLED_ShowCHinese(32,6,6);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
