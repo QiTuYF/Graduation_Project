@@ -1,12 +1,12 @@
 --cpu Cortex-M3
 "guaduationproject\oled.o"
+"guaduationproject\dht11.o"
 "guaduationproject\main.o"
 "guaduationproject\gpio.o"
 "guaduationproject\i2c.o"
 "guaduationproject\usart.o"
 "guaduationproject\stm32f1xx_it.o"
 "guaduationproject\stm32f1xx_hal_msp.o"
-"guaduationproject\dht11.o"
 "guaduationproject\stm32f1xx_hal_gpio_ex.o"
 "guaduationproject\stm32f1xx_hal_i2c.o"
 "guaduationproject\stm32f1xx_hal.o"

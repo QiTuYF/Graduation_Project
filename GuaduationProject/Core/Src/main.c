@@ -22,7 +22,6 @@
 #include "usart.h"
 #include "gpio.h"
 
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "oled.h"
@@ -91,7 +90,6 @@ int main(void)
   MX_GPIO_Init();
   MX_I2C1_Init();
   MX_USART1_UART_Init();
-
   /* USER CODE BEGIN 2 */
   OLED_Init();
   OLED_Clear();
@@ -112,14 +110,12 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	
-	
-	
+
     /* USER CODE BEGIN 3 */
 	//串口打印DHT11是否正常
 	DHT11();
 	
-	OLED_ShowString(0,0,(uint8_t *)"diploma project",16);
+	OLED_ShowString(0,0,(uint8_t *)"diploma project1",16);
 	
 	//在OLED上显示温度湿度
 	Show_temprature_humydity();
