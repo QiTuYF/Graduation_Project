@@ -21,13 +21,13 @@
 #include "i2c.h"
 #include "usart.h"
 #include "gpio.h"
-#include "oled.h"
-#include "dht11.h"
-#include "stdio.h"
+
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "oled.h"
+#include "dht11.h"
+#include "stdio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -90,12 +90,12 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_I2C1_Init();
+  MX_USART1_UART_Init();
+
+  /* USER CODE BEGIN 2 */
   OLED_Init();
   OLED_Clear();
-  MX_USART1_UART_Init();
   HAL_Delay(1000);
-  /* USER CODE BEGIN 2 */
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -108,18 +108,14 @@ int main(void)
 	HAL_Delay(3000);
 	OLED_Clear();
 	
-//	OLED_ShowCHinese(0,3,0);//
-//	OLED_ShowCHinese(16,3,1);//
-//	OLED_ShowCHinese(32,3,2);//
-//	OLED_ShowCHinese(48,3,6);//	
-
-//char tempra[4],humydi[3];
 
   while (1)
   {
     /* USER CODE END WHILE */
 	
 	
+	
+    /* USER CODE BEGIN 3 */
 	//串口打印DHT11是否正常
 	DHT11();
 	
@@ -133,7 +129,6 @@ int main(void)
 	OLED_ShowCHinese(0,6,11);   //显示时间
 	OLED_ShowCHinese(16,6,12);
 	OLED_ShowCHinese(32,6,6);
-    /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
