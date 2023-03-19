@@ -472,6 +472,11 @@
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32f1xx_hal_msp.c</FilePath>
             </File>
+            <File>
+              <FileName>ds1302.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\ds1302.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

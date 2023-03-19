@@ -27,6 +27,7 @@
 #include "oled.h"
 #include "dht11.h"
 #include "stdio.h"
+#include "ds1302.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,13 +99,22 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-	
+    DS1302_Set_Time(0x23,0x06,0x12,0x31,0x23,0x59,0x50);
+//	DS1302_Set_Time(0x23,0x06,0x03,0x19,0x11,0x03,0x10);
+	uint8_t ds1302_write_flag;
+	ds1302_write_flag = DS1302_Read_Register(0xc0);
+	if(ds1302_write_flag == 0)
+	{
+		DS1302_Set_Time(0x23,0x06,0x12,0x31,0x23,0x59,0x50);
+//		DS1302_Set_Time(0x23,0x06,0x03,0x19,0x11,0x03,0x10);
+		DS1302_Write_Register(0xc0,1);
+	}
 		
 	OLED_ShowString(0,0,(uint8_t *)"Welcome to my:",16);	
 	OLED_ShowString(0,3,(uint8_t *)"diploma project",16);
 	HAL_Delay(3000);
 	OLED_Clear();
+	
 	
 
   while (1)
@@ -115,16 +125,16 @@ int main(void)
 	//串口打印DHT11是否正常
 	DHT11();
 	
-	OLED_ShowString(0,0,(uint8_t *)"diploma project1",16);
+	OLED_ShowString(0,0,(uint8_t *)"diploma project",16);
 	
 	//在OLED上显示温度湿度
 	Show_temprature_humydity();
 	
 	//在OLED上显示时间
-//	OLED_ShowString(0,6,(uint8_t *)"Time:",16);      //显示时间
-	OLED_ShowCHinese(0,6,11);   //显示时间
-	OLED_ShowCHinese(16,6,12);
-	OLED_ShowCHinese(32,6,6);
+	Show_time();
+	//清屏
+//	HAL_Delay(200);
+	
   }
   /* USER CODE END 3 */
 }

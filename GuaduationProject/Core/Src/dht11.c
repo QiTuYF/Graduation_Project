@@ -192,10 +192,10 @@ void Coarse_delay_us(uint32_t us)
 void Sprintf_temprature_humydity(void)
 {
 	sprintf(tempra,"%.1f",temperature);
-	printf("%s\r\n",tempra);
+//	printf("%s\r\n",tempra);
 	sprintf(humydi,"%d",humydity);
 	sprintf(humydi,"%s%%",humydi);
-	printf("%s\r\n",humydi);	
+//	printf("%s\r\n",humydi);	
 }  
 
 

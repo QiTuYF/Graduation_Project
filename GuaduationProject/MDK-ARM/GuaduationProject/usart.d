@@ -28,3 +28,4 @@ guaduationproject\usart.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_fla
 guaduationproject\usart.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
 guaduationproject\usart.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 guaduationproject\usart.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+guaduationproject\usart.o: D:\Directory\keil5\directory\MDKDir\ARM\ARMCC\Bin\..\include\stdio.h
