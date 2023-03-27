@@ -22,58 +22,130 @@ static void DS1302_Data_Read_Init(void)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 }
 
+
+    //蓝桥杯DS1302驱动标准写法
 void DS1302_Single_Byte_Write(uint8_t data)
 {
 	DS1302_Data_Write_Init();
-	CLK_L;
+//	CLK_L;
 	for(int i=0;i<8;i++)
 	{
-		CLK_L;
+		CLK_L;		
 		if((data&0x01)==0x01)
 			DATA_H;
 		else
 			DATA_L;
-		CLK_H;
-		data>>=0x01;
+		data>>=0x01;	
+		CLK_H;		
 	}
 }
+
+
 void DS1302_Write_Register(uint8_t regAddress,uint8_t regData)
 {
 	RST_L;
+	HAL_Delay(1);
 	CLK_L;
 	HAL_Delay(1);
 	RST_H;
-	HAL_Delay(2);
+	HAL_Delay(1);
 	DS1302_Single_Byte_Write(regAddress);
 	DS1302_Single_Byte_Write(regData);	
 	RST_L;
-	CLK_L;
-	HAL_Delay(2);
 }
+
+
 uint8_t DS1302_Read_Register(uint8_t regAddress)
 {
-	RST_L;
-	CLK_L;
 	uint8_t regData=0x00;
-	HAL_Delay(3);
+	RST_L;
+	HAL_Delay(1);
+	CLK_L;
+	HAL_Delay(1);
 	RST_H;
+	HAL_Delay(1);	
 	DS1302_Single_Byte_Write(regAddress);
 	DS1302_Data_Read_Init();
 	for(int i=0;i<8;i++)
 	{
+	    CLK_L;
 		regData>>=0x01;
-		CLK_H;
-		HAL_Delay(4);
-		CLK_L;
-		HAL_Delay(14);
 		if(DATA_READ==GPIO_PIN_SET)
 			regData=regData|0x80;
+		CLK_H;	
 	}
-	HAL_Delay(4);
 	RST_L;
+	HAL_Delay(1);
+	CLK_L;
+	HAL_Delay(1);
+	CLK_H;
+	HAL_Delay(1);
 	DATA_L;
+	HAL_Delay(1);
+	DATA_H;
+	HAL_Delay(1);
 	return regData;
 }
+
+
+   //网上copy版写法
+//void DS1302_Single_Byte_Write(uint8_t data)
+//{
+//	DS1302_Data_Write_Init();
+//	CLK_L;
+//	for(int i=0;i<8;i++)
+//	{
+//		CLK_L;
+//		if((data&0x01)==0x01)
+//			DATA_H;
+//		else
+//			DATA_L;
+//		CLK_H;
+//		data>>=0x01;
+//	}
+//}
+//void DS1302_Write_Register(uint8_t regAddress,uint8_t regData)
+//{
+//	RST_L;
+//	CLK_L;
+//	HAL_Delay(1);
+//	RST_H;
+//	HAL_Delay(2);
+//	DS1302_Single_Byte_Write(regAddress);
+//	DS1302_Single_Byte_Write(regData);	
+//	RST_L;
+//	CLK_L;
+//	HAL_Delay(2);
+//}
+//uint8_t DS1302_Read_Register(uint8_t regAddress)
+//{
+//	RST_L;
+//	CLK_L;
+//	uint8_t regData=0x00;
+//	HAL_Delay(3);
+//	RST_H;
+//	DS1302_Single_Byte_Write(regAddress);
+//	DS1302_Data_Read_Init();
+//	for(int i=0;i<8;i++)
+//	{
+//		regData>>=0x01;
+//		CLK_H;
+//		HAL_Delay(4);
+//		CLK_L;
+//		HAL_Delay(4);
+//		if(DATA_READ==GPIO_PIN_SET)
+//			regData=regData|0x80;
+//	}
+//	HAL_Delay(4);
+//	RST_L;
+//	DATA_L;
+//	return regData;
+//}
+
+
+
+
+
 
 void DS1302_Set_Time(uint8_t year,uint8_t week,uint8_t month,uint8_t day,uint8_t hour,uint8_t minute,uint8_t second)
 {
@@ -123,10 +195,17 @@ void Sprintf_time(void)
 	memset(minu,0,sizeof(sec));
 	memset(sec,0,sizeof(sec));
 	memset(wee,0,sizeof(sec));
+//	sprintf(yea,"%d",year);
+//	sprintf(mon,"%02d",month);
+//	sprintf(dayy,"%02d",day);
+//	sprintf(hou,"%02d",hour);
+//	sprintf(minu,"%02d",minute);
+//	sprintf(sec,"%02d",second);
+//	sprintf(wee,"%d",week);
 	sprintf(yea,"%d",year);
-	sprintf(mon,"%02d",month);
-	sprintf(dayy,"%02d",day);
-	sprintf(hou,"%02d",hour);
+	sprintf(mon,"%d",month);
+	sprintf(dayy,"%d",day);
+	sprintf(hou,"%d",hour);
 	sprintf(minu,"%02d",minute);
 	sprintf(sec,"%02d",second);
 	sprintf(wee,"%d",week);
@@ -143,6 +222,10 @@ void Show_time(void)
 //	OLED_ShowCHinese(16,6,12);
 //	OLED_ShowCHinese(32,6,6);
 //	OLED_ShowNum(0,6,year,4,16);
+//	OLED_ShowNum(72,6,hour,2,16);
+//	OLED_ShowNum(88,6,minute,2,16);
+//	OLED_ShowNum(104,6,second,2,16);
+
 	OLED_ShowString(0,6,(uint8_t *)yea,16);
 	OLED_ShowString(40,6,(uint8_t *)mon,16);
 	OLED_ShowString(56,6,(uint8_t *)dayy,16);

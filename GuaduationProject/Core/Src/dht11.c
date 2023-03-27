@@ -20,7 +20,7 @@ void DHT11(void)
     {
         printf("DHT11没有应答，请检查传感器!\r\n");
     }
-    HAL_Delay(1000);                              
+//    HAL_Delay(1000);                              
   
 }
  

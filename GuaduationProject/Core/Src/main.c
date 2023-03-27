@@ -58,7 +58,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+extern uint32_t second;
 /* USER CODE END 0 */
 
 /**
@@ -94,26 +94,25 @@ int main(void)
   /* USER CODE BEGIN 2 */
   OLED_Init();
   OLED_Clear();
-  HAL_Delay(1000);
+//  HAL_Delay(1000);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-    DS1302_Set_Time(0x23,0x06,0x12,0x31,0x23,0x59,0x50);
-//	DS1302_Set_Time(0x23,0x06,0x03,0x19,0x11,0x03,0x10);
+//    DS1302_Set_Time(0x23,0x01,0x03,0x27,0x20,0x22,0x00);
+	DS1302_Set_Time(0x23,0x07,0x12,0x31,0x23,0x59,0x50);
 	uint8_t ds1302_write_flag;
 	ds1302_write_flag = DS1302_Read_Register(0xc0);
 	if(ds1302_write_flag == 0)
 	{
-		DS1302_Set_Time(0x23,0x06,0x12,0x31,0x23,0x59,0x50);
-//		DS1302_Set_Time(0x23,0x06,0x03,0x19,0x11,0x03,0x10);
+//		DS1302_Set_Time(0x23,0x01,0x03,0x27,0x20,0x21,0x00);
 		DS1302_Write_Register(0xc0,1);
 	}
 		
-	OLED_ShowString(0,0,(uint8_t *)"Welcome to my:",16);	
-	OLED_ShowString(0,3,(uint8_t *)"diploma project",16);
-	HAL_Delay(3000);
-	OLED_Clear();
+//	OLED_ShowString(0,0,(uint8_t *)"Welcome to my:",16);	
+//	OLED_ShowString(0,3,(uint8_t *)"diploma project",16);
+//	HAL_Delay(3000);
+//	OLED_Clear();
 	
 	
 
@@ -124,6 +123,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	//串口打印DHT11是否正常
 	DHT11();
+//	DHT11_READ_DATA();
 	
 	OLED_ShowString(0,0,(uint8_t *)"diploma project",16);
 	
@@ -132,8 +132,12 @@ int main(void)
 	
 	//在OLED上显示时间
 	Show_time();
-	//清屏
-//	HAL_Delay(200);
+	if(second == 0)   //定时清屏，以免屏幕残留字符
+	{
+		OLED_Clear();
+		Show_time();
+	} 
+	
 	
   }
   /* USER CODE END 3 */
