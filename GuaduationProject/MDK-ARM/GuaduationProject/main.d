@@ -35,3 +35,4 @@ guaduationproject\main.o: ../Core/Inc/dht11.h
 guaduationproject\main.o: D:\Directory\keil5\directory\MDKDir\ARM\ARMCC\Bin\..\include\stdio.h
 guaduationproject\main.o: ../Core/Inc/ds1302.h
 guaduationproject\main.o: D:\Directory\keil5\directory\MDKDir\ARM\ARMCC\Bin\..\include\string.h
+guaduationproject\main.o: ../Core/Inc/stmflash.h

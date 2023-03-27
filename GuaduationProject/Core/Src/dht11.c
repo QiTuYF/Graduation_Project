@@ -20,7 +20,8 @@ void DHT11(void)
     {
         printf("DHT11没有应答，请检查传感器!\r\n");
     }
-//    HAL_Delay(1000);                              
+//    HAL_Delay(1000);
+	HAL_Delay(50);     	
   
 }
  
@@ -108,7 +109,7 @@ unsigned char DHT11_READ_DATA(void)
         {
 			temperature = data[2]+data[3]*0.1;
 			humydity    = data[0];
-            printf("当前湿度：%d.%d%%  当前温度：%d.%d°C--",data[0],data[1],data[2],data[3]);
+            printf("当前湿度：%d.%d%%  当前温度：%d.%d°C\r\n",data[0],data[1],data[2],data[3]);
             return 1;                               //  数据校验通过
         }
         else

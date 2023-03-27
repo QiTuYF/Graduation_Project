@@ -28,6 +28,7 @@
 #include "dht11.h"
 #include "stdio.h"
 #include "ds1302.h"
+#include "stmflash.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -94,18 +95,18 @@ int main(void)
   /* USER CODE BEGIN 2 */
   OLED_Init();
   OLED_Clear();
-//  HAL_Delay(1000);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-//    DS1302_Set_Time(0x23,0x01,0x03,0x27,0x20,0x22,0x00);
-	DS1302_Set_Time(0x23,0x07,0x12,0x31,0x23,0x59,0x50);
+  //DS1302是否写入过时间判断标志，如果写入过就不再写入了
+//    DS1302_Set_Time(0x23,0x01,0x03,0x27,0x21,0x50,0x00);
+//	DS1302_Set_Time(0x23,0x07,0x12,0x31,0x23,0x59,0x50);
 	uint8_t ds1302_write_flag;
 	ds1302_write_flag = DS1302_Read_Register(0xc0);
 	if(ds1302_write_flag == 0)
 	{
-//		DS1302_Set_Time(0x23,0x01,0x03,0x27,0x20,0x21,0x00);
+		DS1302_Set_Time(0x23,0x01,0x03,0x27,0x21,0x50,0x00);
 		DS1302_Write_Register(0xc0,1);
 	}
 		
@@ -123,7 +124,6 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	//串口打印DHT11是否正常
 	DHT11();
-//	DHT11_READ_DATA();
 	
 	OLED_ShowString(0,0,(uint8_t *)"diploma project",16);
 	
@@ -137,7 +137,6 @@ int main(void)
 		OLED_Clear();
 		Show_time();
 	} 
-	
 	
   }
   /* USER CODE END 3 */
