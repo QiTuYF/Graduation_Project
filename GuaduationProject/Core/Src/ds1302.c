@@ -1,7 +1,8 @@
 #include "ds1302.h"
  
 uint32_t year=0,month=0,day=0,hour=0,minute=0,second=0,week=0;
-char  yea[5],mon[3],dayy[3],hou[3],minu[3],sec[3],wee[2];
+char  yea[5],mont[4],dayy[4],hou[4],minu[4],sec[4],wee[3];
+
 static void DS1302_Data_Write_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -188,29 +189,29 @@ void DS1302_Print_Time(void)
 void Sprintf_time(void)
 {
 	printf("%d-%d-%02d %d:%02d:%02d 星期%d\r\n",year,month,day,hour,minute,second,week);
-	memset(yea,0,sizeof(sec));
-	memset(mon,0,sizeof(sec));
-	memset(dayy,0,sizeof(sec));
-	memset(hou,0,sizeof(sec));
-	memset(minu,0,sizeof(sec));
+	memset(yea,0,sizeof(yea));
+	memset(mont,0,sizeof(mont));
+	memset(dayy,0,sizeof(dayy));
+	memset(hou,0,sizeof(hou));
+	memset(minu,0,sizeof(minu));
 	memset(sec,0,sizeof(sec));
-	memset(wee,0,sizeof(sec));
+	memset(wee,0,sizeof(wee));
 //	sprintf(yea,"%d",year);
-//	sprintf(mon,"%02d",month);
+//	sprintf(mont,"%02d",month);
 //	sprintf(dayy,"%02d",day);
 //	sprintf(hou,"%02d",hour);
 //	sprintf(minu,"%02d",minute);
 //	sprintf(sec,"%02d",second);
 //	sprintf(wee,"%d",week);
 	sprintf(yea,"%d",year);
-	sprintf(mon,"%d",month);
-	sprintf(dayy,"%d",day);
-	sprintf(hou,"%d",hour);
+	sprintf(mont,"%2d",month);
+	sprintf(dayy,"%2d",day);
+	sprintf(hou,"%2d",hour);
 	sprintf(minu,"%02d",minute);
 	sprintf(sec,"%02d",second);
 	sprintf(wee,"%d",week);
 	
-	
+	printf("\r\n%s月\r\n",mont);
 }
 
 void Show_time(void)
@@ -226,14 +227,30 @@ void Show_time(void)
 //	OLED_ShowNum(88,6,minute,2,16);
 //	OLED_ShowNum(104,6,second,2,16);
 
-	OLED_ShowString(0,6,(uint8_t *)yea,16);
-	OLED_ShowString(40,6,(uint8_t *)mon,16);
-	OLED_ShowString(56,6,(uint8_t *)dayy,16);
-	OLED_ShowString(72,6,(uint8_t *)hou,16);
-	OLED_ShowString(88,6,(uint8_t *)minu,16);
-	OLED_ShowString(104,6,(uint8_t *)sec,16);
-	OLED_ShowString(120,6,(uint8_t *)wee,16);
 	
+	OLED_ShowCHinese(32,0,13); //当
+	OLED_ShowCHinese(48,0,14); //前
+	OLED_ShowCHinese(64,0,11); //时
+	OLED_ShowCHinese(80,0,12); //间
+	
+	OLED_ShowString(0,3,(uint8_t *)yea,16); //年：如2022
+	OLED_ShowCHinese(32,3,17); //年
+	OLED_ShowString(56,3,(uint8_t *)mont,16); //月：如3
+	OLED_ShowCHinese(72,3,16); //月
+	
+	printf("%s日\r\n",dayy);
+	OLED_ShowString(96,3,(uint8_t *)dayy,16); //日：如31
+	OLED_ShowCHinese(112,3,15); //日
+	
+	OLED_ShowString(0,6,(uint8_t *)hou,16); //时：如19
+	OLED_ShowCHinese(16,6,18); //时
+	OLED_ShowString(32,6,(uint8_t *)minu,16); //分：如23
+	OLED_ShowCHinese(48,6,19); //分
+	OLED_ShowString(64,6,(uint8_t *)sec,16); //秒：如31
+	OLED_ShowCHinese(80,6,20); //秒
+	
+	OLED_ShowCHinese(96,6,21); //周
+	OLED_ShowString(112,6,(uint8_t *)wee,16); //星期：如1
 //	HAL_Delay(50);
 	
 }

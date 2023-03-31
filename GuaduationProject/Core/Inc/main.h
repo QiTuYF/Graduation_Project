@@ -57,14 +57,24 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define DATA_Pin GPIO_PIN_1
-#define DATA_GPIO_Port GPIOA
-#define RST_Pin GPIO_PIN_2
-#define RST_GPIO_Port GPIOA
-#define CLK_Pin GPIO_PIN_3
-#define CLK_GPIO_Port GPIOA
-#define DHT11_Pin GPIO_PIN_9
-#define DHT11_GPIO_Port GPIOB
+#define DATA_DS1302_Pin GPIO_PIN_1
+#define DATA_DS1302_GPIO_Port GPIOA
+#define RST_DS1302_Pin GPIO_PIN_2
+#define RST_DS1302_GPIO_Port GPIOA
+#define CLK_DS1302_Pin GPIO_PIN_3
+#define CLK_DS1302_GPIO_Port GPIOA
+#define buzzer_io_Pin GPIO_PIN_11
+#define buzzer_io_GPIO_Port GPIOB
+#define key_alarm_Pin GPIO_PIN_12
+#define key_alarm_GPIO_Port GPIOB
+#define key_decrease_Pin GPIO_PIN_13
+#define key_decrease_GPIO_Port GPIOB
+#define key_increase_Pin GPIO_PIN_14
+#define key_increase_GPIO_Port GPIOB
+#define key_interface_Pin GPIO_PIN_15
+#define key_interface_GPIO_Port GPIOB
+#define DATA_DHT11_Pin GPIO_PIN_9
+#define DATA_DHT11_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

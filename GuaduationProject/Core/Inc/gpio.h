@@ -33,7 +33,18 @@ extern "C" {
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN Private defines */
-
+//开启蜂鸣器
+#define BUZZ_ON HAL_GPIO_WritePin(GPIOB, GPIO_PIN_11, GPIO_PIN_RESET)
+//关闭蜂鸣器
+#define BUZZ_OFF HAL_GPIO_WritePin(GPIOB, GPIO_PIN_11, GPIO_PIN_SET)
+//读界面切换按键
+#define Read_interface HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)
+//读闹钟设置按键
+#define Read_alarm_set HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)
+//读+按键
+#define Read_increase HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14)
+//读-按键
+#define Read_decrease HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15)
 /* USER CODE END Private defines */
 
 void MX_GPIO_Init(void);

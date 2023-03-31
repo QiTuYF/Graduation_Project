@@ -1,7 +1,7 @@
 #include "dht11.h"
 
-double temperature=0; 
-uint32_t humydity=0;
+double temperature=0,last_temperature=0; 
+uint32_t humydity=0,last_humydity=0;
 char tempra[4],humydi[3];
 
 extern UART_HandleTypeDef huart1;
@@ -206,17 +206,33 @@ void Sprintf_temprature_humydity(void)
   * @retval 0/1
   */
 void Show_temprature_humydity(void)
-{  	
+{
+	if( last_temperature-temperature >= 0.1 
+	 || temperature-last_temperature>=0.1
+	 || last_humydity-humydity>1
+	 || humydity-last_humydity>1 )
+	{
+			OLED_Clear();
+	}
+	last_temperature = temperature;
+  	last_humydity = humydity;
 	Sprintf_temprature_humydity();
 //	OLED_ShowString(0,2,(uint8_t *)"Temprature:",16);   //显示温度
-    OLED_ShowCHinese(0,2,7);   //显示温度
-	OLED_ShowCHinese(16,2,8);
-	OLED_ShowCHinese(32,2,6);
-	OLED_ShowString(48,2,(uint8_t *)tempra,16);
-	OLED_ShowString(88,2,(uint8_t *)"C",16);
+	OLED_ShowCHinese(0,2,13);  //当
+	OLED_ShowCHinese(16,2,14);  //前
+	OLED_ShowCHinese(32,2,7);  //温
+	OLED_ShowCHinese(48,2,10);  //度
+	OLED_ShowCHinese(64,2,6);  //：
+	OLED_ShowString(80,2,(uint8_t *)tempra,16);
+	OLED_ShowString(120,2,(uint8_t *)"C",16);
+    
 //	OLED_ShowString(0,4,(uint8_t *)"Humydity:",16);   //显示湿度
-	OLED_ShowCHinese(0,4,9);   //显示湿度
-	OLED_ShowCHinese(16,4,10);
-	OLED_ShowCHinese(32,4,6);
-	OLED_ShowString(48,4,(uint8_t *)humydi,16);
+	OLED_ShowCHinese(0,5,13);  //当
+	OLED_ShowCHinese(16,5,14);  //前
+	OLED_ShowCHinese(32,5,9);  //湿
+	OLED_ShowCHinese(48,5,10);  //度
+	OLED_ShowCHinese(64,5,6);  //：
+	OLED_ShowString(80,5,(uint8_t *)humydi,16);
+	
+	
 }

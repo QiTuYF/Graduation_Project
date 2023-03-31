@@ -29,6 +29,7 @@
 #include "stdio.h"
 #include "ds1302.h"
 #include "stmflash.h"
+#include "key.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,6 +61,8 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 extern uint32_t second;
+extern uint8_t interface_state;
+extern uint8_t key_state;
 /* USER CODE END 0 */
 
 /**
@@ -100,7 +103,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   //DS1302是否写入过时间判断标志，如果写入过就不再写入了
-//    DS1302_Set_Time(0x23,0x01,0x03,0x27,0x21,0x50,0x00);
+//    DS1302_Set_Time(0x23,0x05,0x03,0x31,0x13,0x29,0x09);
 //	DS1302_Set_Time(0x23,0x07,0x12,0x31,0x23,0x59,0x50);
 	uint8_t ds1302_write_flag;
 	ds1302_write_flag = DS1302_Read_Register(0xc0);
@@ -125,19 +128,12 @@ int main(void)
 	//串口打印DHT11是否正常
 	DHT11();
 	
-	OLED_ShowString(0,0,(uint8_t *)"diploma project",16);
+//	OLED_ShowString(0,0,(uint8_t *)"diploma project",16);
 	
-	//在OLED上显示温度湿度
-	Show_temprature_humydity();
 	
-	//在OLED上显示时间
-	Show_time();
-	if(second == 0)   //定时清屏，以免屏幕残留字符
-	{
-		OLED_Clear();
-		Show_time();
-	} 
+	key_scan();
 	
+	key_state_response();
   }
   /* USER CODE END 3 */
 }
