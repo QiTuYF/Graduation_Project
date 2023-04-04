@@ -33,11 +33,11 @@ guaduationproject\main.o: ../Core/Inc/i2c.h
 guaduationproject\main.o: ../Core/Inc/tim.h
 guaduationproject\main.o: ../Core/Inc/treatment_tim.h
 guaduationproject\main.o: ../Core/Inc/gpio.h
+guaduationproject\main.o: ../Core/Inc/key.h
+guaduationproject\main.o: D:\Directory\keil5\directory\MDKDir\ARM\ARMCC\Bin\..\include\stdio.h
 guaduationproject\main.o: ../Core/Inc/usart.h
 guaduationproject\main.o: ../Core/Inc/oled.h
-guaduationproject\main.o: ../Core/Inc/dht11.h
-guaduationproject\main.o: D:\Directory\keil5\directory\MDKDir\ARM\ARMCC\Bin\..\include\stdio.h
 guaduationproject\main.o: ../Core/Inc/ds1302.h
 guaduationproject\main.o: D:\Directory\keil5\directory\MDKDir\ARM\ARMCC\Bin\..\include\string.h
+guaduationproject\main.o: ../Core/Inc/dht11.h
 guaduationproject\main.o: ../Core/Inc/stmflash.h
-guaduationproject\main.o: ../Core/Inc/key.h

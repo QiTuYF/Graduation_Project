@@ -32,3 +32,10 @@ guaduationproject\tim.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_e
 guaduationproject\tim.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 guaduationproject\tim.o: ../Core/Inc/treatment_tim.h
 guaduationproject\tim.o: ../Core/Inc/gpio.h
+guaduationproject\tim.o: ../Core/Inc/key.h
+guaduationproject\tim.o: D:\Directory\keil5\directory\MDKDir\ARM\ARMCC\Bin\..\include\stdio.h
+guaduationproject\tim.o: ../Core/Inc/usart.h
+guaduationproject\tim.o: ../Core/Inc/oled.h
+guaduationproject\tim.o: ../Core/Inc/ds1302.h
+guaduationproject\tim.o: D:\Directory\keil5\directory\MDKDir\ARM\ARMCC\Bin\..\include\string.h
+guaduationproject\tim.o: ../Core/Inc/dht11.h

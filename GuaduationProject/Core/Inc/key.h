@@ -11,6 +11,9 @@
 #include "ds1302.h"
 #include "dht11.h"
 /* Private function prototypes -----------------------------------------------*/
+
+#define interface_state_max 3 //最大页面数
+
 void key_scan(void);
 void key_state_response(void);
 #endif

@@ -2,6 +2,8 @@
 #define __TREATMENT_TIM_H__
 
 #include "gpio.h"
+#include "key.h"
+#include "ds1302.h"
 
 void treatment_tim_one(void);
 

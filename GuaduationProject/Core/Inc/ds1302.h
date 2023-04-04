@@ -25,6 +25,9 @@
 #define R_WEEK   0x8B
 #define R_YEAR   0x8D
 #define R_CONTR  0x8F
+
+#define alarm_count_max 3 //闹钟最大数
+#define alarm_parameter_max 4  //闹钟最大参数：如、时、分、秒、开启或关闭
  
 #define RST_L     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_RESET)
 #define RST_H     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_SET)

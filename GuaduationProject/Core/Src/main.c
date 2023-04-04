@@ -64,7 +64,7 @@ void SystemClock_Config(void);
 extern uint32_t second;
 extern uint8_t interface_state;
 extern uint8_t key_state;
-extern uint32_t alarm_clock[3][3];
+extern uint32_t alarm_clock[alarm_count_max][alarm_parameter_max];
 /* USER CODE END 0 */
 
 /**

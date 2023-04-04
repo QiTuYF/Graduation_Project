@@ -1,7 +1,5 @@
 #include "key.h"
 
-#define interface_state_max 3 //最大页面数
-
 extern uint32_t second;
 //extern uint8_t interface_state;
 //extern uint8_t key_state;
@@ -85,9 +83,9 @@ void key_state_response(void)
 			//在OLED上显示温度湿度
 			Show_temprature_humydity();
 		}
-		else if(interface_state == 2)   //设置闹钟数据
+		else if(interface_state == 3)   //设置闹钟数据
 		{
-			//显示所有闹钟数据
+			Set_alarm();//显示所有闹钟数据
 		}
 	}
 }

@@ -2,10 +2,11 @@
  
 uint32_t year=0,month=0,day=0,hour=0,minute=0,second=0,week=0;
 char  yea[5],mont[4],dayy[4],hou[4],minu[4],sec[4],wee[3];
-uint32_t alarm_clock[3][3]=
+char alarm_minute[3],alarm_second[3];
+uint32_t alarm_clock[alarm_count_max][alarm_parameter_max]=
 {
-	{19,24,20},
-	{19,24,30},
+	{21,33,50,1},
+	{21,33,55,0},
 };
 static void DS1302_Data_Write_Init(void)
 {
@@ -262,5 +263,33 @@ void Show_time(void)
 
 void Set_alarm(void)
 {
-	
+	uint8_t i=0;
+	OLED_ShowCHinese(32,0,13); //µ±
+	OLED_ShowCHinese(48,0,14); //Ç°
+	OLED_ShowCHinese(64,0,22); //ÄÖ
+	OLED_ShowCHinese(80,0,23); //ÖÓ
+	for(i=0; i<alarm_count_max; i++)
+	{
+		memset(alarm_minute,0,sizeof(2));
+		sprintf(alarm_minute,"%02d",alarm_clock[i][1]);
+		memset(alarm_second,0,sizeof(2));
+		sprintf(alarm_second,"%02d",alarm_clock[i][2]);
+		
+		OLED_ShowNum(0,2*(i+1),(unsigned int)i,2,16); //ÄÖÖÓÐòºÅ
+		OLED_ShowNum(24,2*(i+1),alarm_clock[i][0],2,16); //ÄÖÖÓÊ±
+		OLED_ShowString(40,2*(i+1),(uint8_t *)":",16);
+		OLED_ShowString(48,2*(i+1),(uint8_t *)alarm_minute,16);  //ÄÖÖÓ·Ö
+//		OLED_ShowNum(48,2*(i+1),alarm_clock[i][1],2,16);
+		OLED_ShowString(64,2*(i+1),(uint8_t *)":",16);
+		OLED_ShowString(72,2*(i+1),(uint8_t *)alarm_second,16);  //ÄÖÖÓÃë
+//		OLED_ShowNum(72,2*(i+1),alarm_clock[i][2],2,16);  //ÄÖÖÓÃë
+		if(alarm_clock[i][3] == 0)
+		{
+			OLED_ShowCHinese(96,2*(i+1),26);
+			OLED_ShowCHinese(112,2*(i+1),27);
+		}else if(alarm_clock[i][3] == 1){
+			OLED_ShowCHinese(96,2*(i+1),24);
+			OLED_ShowCHinese(112,2*(i+1),25);
+		}
+	}
 }
