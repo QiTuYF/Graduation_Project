@@ -2,7 +2,11 @@
  
 uint32_t year=0,month=0,day=0,hour=0,minute=0,second=0,week=0;
 char  yea[5],mont[4],dayy[4],hou[4],minu[4],sec[4],wee[3];
-
+uint32_t alarm_clock[3][3]=
+{
+	{19,24,20},
+	{19,24,30},
+};
 static void DS1302_Data_Write_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -188,7 +192,8 @@ void DS1302_Print_Time(void)
 
 void Sprintf_time(void)
 {
-	printf("%d-%d-%02d %d:%02d:%02d ÐÇÆÚ%d\r\n",year,month,day,hour,minute,second,week);
+//	printf("%d-%d-%02d %d:%02d:%02d ÐÇÆÚ%d\r\n",year,month,day,hour,minute,second,week);
+	printf("%d-%d-%d %d:%d:%d ÐÇÆÚ%d\r\n",year,month,day,hour,minute,second,week);
 	memset(yea,0,sizeof(yea));
 	memset(mont,0,sizeof(mont));
 	memset(dayy,0,sizeof(dayy));
@@ -255,4 +260,7 @@ void Show_time(void)
 	
 }
 
-
+void Set_alarm(void)
+{
+	
+}

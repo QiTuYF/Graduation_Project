@@ -6,6 +6,7 @@
 #include "main.h"
 #include "stdio.h"
 #include "stm32f1xx.h" 
+#include "usart.h"
 #include "oled.h"
 #include "ds1302.h"
 #include "dht11.h"

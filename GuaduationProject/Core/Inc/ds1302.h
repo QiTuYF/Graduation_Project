@@ -54,5 +54,6 @@ void DS1302_Set_Time(uint8_t year,uint8_t week,uint8_t month,uint8_t day,uint8_t
 timeNow_t DS1302_Read_Time(void);
 void DS1302_Print_Time(void);
 void Show_time(void);
+void Set_alarm(void);
  
 #endif

@@ -1,10 +1,13 @@
 #include "key.h"
 
-extern uint32_t second;
-extern uint8_t interface_state;
-extern uint8_t key_state;
+#define interface_state_max 3 //最大页面数
 
-uint8_t key_state=1,interface_state=1;
+extern uint32_t second;
+//extern uint8_t interface_state;
+//extern uint8_t key_state;
+
+uint8_t key_state=1; //按键状态
+uint8_t interface_state=1;  //页面状态
 
 void key_scan(void)
 {
@@ -12,16 +15,16 @@ void key_scan(void)
 //	HAL_Delay(50);
 //	BUZZ_OFF;
 //	HAL_Delay(50);
-	if(0 == Read_interface)
+	if(0 == Read_interface)   //Read_interface为读界面切换按键状态
 	{
-		HAL_Delay(10);
+		HAL_Delay(2);
 		if(0 == Read_interface)
 		{
 			while(0 == Read_interface);
 			OLED_Clear();
 			key_state = 1;
 			interface_state++;
-			if(interface_state >= 3)  interface_state=1;
+			if(interface_state > interface_state_max)  interface_state=1;
 			//
 			//
 		}
@@ -62,12 +65,12 @@ void key_scan(void)
 
 void key_state_response(void)
 {
-	if(key_state == 1)
+	if(key_state == 1)  
 	{
-		if(interface_state == 1)
+		if(interface_state == 1)   //在OLED上显示时间
 		{
 			
-			//在OLED上显示时间
+			
 			if(second == 0)   //定时清屏，以免屏幕残留字符
 			{
 				OLED_Clear();
@@ -75,10 +78,16 @@ void key_state_response(void)
 			} 
 			Show_time();
 		}
-		else if(interface_state == 2)
-		{	
+		else if(interface_state == 2)   //在OLED上显示温度湿度
+		{
+			//串口打印DHT11是否正常
+			DHT11();
 			//在OLED上显示温度湿度
 			Show_temprature_humydity();
+		}
+		else if(interface_state == 2)   //设置闹钟数据
+		{
+			//显示所有闹钟数据
 		}
 	}
 }

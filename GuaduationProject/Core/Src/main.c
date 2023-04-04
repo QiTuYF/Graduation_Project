@@ -64,6 +64,7 @@ void SystemClock_Config(void);
 extern uint32_t second;
 extern uint8_t interface_state;
 extern uint8_t key_state;
+extern uint32_t alarm_clock[3][3];
 /* USER CODE END 0 */
 
 /**
@@ -126,17 +127,18 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
-	//串口打印DHT11是否正常
+	printf("alarm: %d:%d:%d\r\n",alarm_clock[0][0],alarm_clock[0][1],alarm_clock[0][2]);
+	DS1302_Print_Time();
 	DHT11();
+    /* USER CODE BEGIN 3 */
+	
 	
 //	OLED_ShowString(0,0,(uint8_t *)"diploma project",16);
 	
 	
 	key_scan();
 	
-	key_state_response();
+	key_state_response(); //按键状态响应
   }
   /* USER CODE END 3 */
 }
