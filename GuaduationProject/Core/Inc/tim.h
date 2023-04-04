@@ -1,9 +1,9 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    gpio.h
+  * @file    tim.h
   * @brief   This file contains all the function prototypes for
-  *          the gpio.c file
+  *          the tim.c file
   ******************************************************************************
   * @attention
   *
@@ -18,8 +18,8 @@
   */
 /* USER CODE END Header */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __GPIO_H__
-#define __GPIO_H__
+#ifndef __TIM_H__
+#define __TIM_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -29,27 +29,16 @@ extern "C" {
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "treatment_tim.h"
 /* USER CODE END Includes */
 
+extern TIM_HandleTypeDef htim1;
+
 /* USER CODE BEGIN Private defines */
-//¿ªÆô·äÃùÆ÷
-#define BUZZ_ON HAL_GPIO_WritePin(GPIOB, GPIO_PIN_11, GPIO_PIN_RESET)
-//¹Ø±Õ·äÃùÆ÷
-#define BUZZ_OFF HAL_GPIO_WritePin(GPIOB, GPIO_PIN_11, GPIO_PIN_SET)
-//·­×ª·äÃùÆ÷×´Ì¬
-#define BUZZ_TURN HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_11)
-//¶Á½çÃæÇÐ»»°´¼ü
-#define Read_interface HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)
-//ÄÖÖÓÉèÖÃ°´¼ü
-#define Read_alarm_set HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)
-//¶Á+°´¼ü
-#define Read_increase HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14)
-//¶Á-°´¼ü
-#define Read_decrease HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15)
+
 /* USER CODE END Private defines */
 
-void MX_GPIO_Init(void);
+void MX_TIM1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 
@@ -58,5 +47,6 @@ void MX_GPIO_Init(void);
 #ifdef __cplusplus
 }
 #endif
-#endif /*__ GPIO_H__ */
+
+#endif /* __TIM_H__ */
 
