@@ -4,8 +4,13 @@ extern uint32_t second;
 //extern uint8_t interface_state;
 //extern uint8_t key_state;
 
+
 uint8_t key_state=1; //按键状态
 uint8_t interface_state=1;  //页面状态
+uint8_t increase_state=0;
+uint8_t decrease_state=0;
+uint8_t up_down_state=0;
+uint8_t left_right_state=0;
 
 void key_scan(void)
 {
@@ -29,7 +34,7 @@ void key_scan(void)
 	}
 	if(0 == Read_alarm_set)
 	{
-		HAL_Delay(20);
+		HAL_Delay(2);
 		if(0 == Read_alarm_set)
 		{
 			while(0 == Read_alarm_set);
@@ -39,22 +44,61 @@ void key_scan(void)
 	}
 	if(0 == Read_increase)
 	{
-		HAL_Delay(20);
+		HAL_Delay(2);
 		if(0 == Read_increase)
 		{
 			while(0 == Read_increase);
-			//
-			//
+			if(interface_state == 3) //在设置页面下按键才有效
+			{
+				increase_state=1;
+			}
+			
 		}
 	}
 	if(0 == Read_decrease)
 	{
-		HAL_Delay(20);
+		HAL_Delay(2);
 		if(0 == Read_decrease)
 		{
 			while(0 == Read_decrease);
-			//
-			//
+			if(interface_state == 3) //在设置页面下按键才有效
+			{
+				decrease_state=1;
+			}
+			
+		}
+	}
+	if(0 == Set_up_down)
+	{
+		HAL_Delay(2);
+		if(0 == Set_up_down)
+		{
+			while(0 == Set_up_down);
+			if(interface_state == 3) //在设置页面下按键才有效
+			{
+				up_down_state++;
+				if(up_down_state >= alarm_count_max)
+				{
+					up_down_state=0;
+				}			
+			}
+			
+		}
+	}
+	if(0 == Set_left_right)
+	{
+		HAL_Delay(2);
+		if(0 == Set_left_right)
+		{
+			while(0 == Set_left_right);
+			if(interface_state == 3) //在设置页面下按键才有效
+			{
+				left_right_state++;
+				if(left_right_state >= alarm_parameter_max)
+				{
+					left_right_state=0;
+				}
+			}			
 		}
 	}
 	

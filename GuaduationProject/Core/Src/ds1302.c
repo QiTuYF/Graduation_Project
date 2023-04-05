@@ -3,11 +3,19 @@
 uint32_t year=0,month=0,day=0,hour=0,minute=0,second=0,week=0;
 char  yea[5],mont[4],dayy[4],hou[4],minu[4],sec[4],wee[3];
 char alarm_minute[3],alarm_second[3];
+
+extern uint8_t increase_state;
+extern uint8_t decrease_state;
+extern uint8_t up_down_state;
+extern uint8_t left_right_state; 
+
 uint32_t alarm_clock[alarm_count_max][alarm_parameter_max]=
 {
 	{21,33,50,1},
 	{21,33,55,0},
 };
+
+
 static void DS1302_Data_Write_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -264,6 +272,8 @@ void Show_time(void)
 void Set_alarm(void)
 {
 	uint8_t i=0;
+	OLED_ShowNum(0,0,(unsigned int)up_down_state+1,1,16);  //当前设置的坐标x轴
+	OLED_ShowNum(16,0,(unsigned int)left_right_state+1,1,16);  //当前设置的坐标y轴
 	OLED_ShowCHinese(32,0,13); //当
 	OLED_ShowCHinese(48,0,14); //前
 	OLED_ShowCHinese(64,0,22); //闹
@@ -274,8 +284,8 @@ void Set_alarm(void)
 		sprintf(alarm_minute,"%02d",alarm_clock[i][1]);
 		memset(alarm_second,0,sizeof(2));
 		sprintf(alarm_second,"%02d",alarm_clock[i][2]);
-		
-		OLED_ShowNum(0,2*(i+1),(unsigned int)i,2,16); //闹钟序号
+
+		OLED_ShowNum(0,2*(i+1),(unsigned int)i+1,2,16); //闹钟序号
 		OLED_ShowNum(24,2*(i+1),alarm_clock[i][0],2,16); //闹钟时
 		OLED_ShowString(40,2*(i+1),(uint8_t *)":",16);
 		OLED_ShowString(48,2*(i+1),(uint8_t *)alarm_minute,16);  //闹钟分
@@ -291,5 +301,74 @@ void Set_alarm(void)
 			OLED_ShowCHinese(96,2*(i+1),24);
 			OLED_ShowCHinese(112,2*(i+1),25);
 		}
+	}
+	Set_alarm_time();
+}
+
+void Set_alarm_time(void)
+{
+	if(increase_state == 1)
+	{
+		alarm_clock[up_down_state][left_right_state]++;
+		if(left_right_state == alarm_parameter_hour)
+		{
+			if(alarm_clock[up_down_state][left_right_state] >= 24)  //加时超出范围
+			{
+				alarm_clock[up_down_state][left_right_state] = 0;
+			}
+		}else if(left_right_state == alarm_parameter_minute)
+		{
+			if(alarm_clock[up_down_state][left_right_state] >= 60)  //加分超出范围
+			{
+				alarm_clock[up_down_state][left_right_state] = 0;
+			}
+		}else if(left_right_state == alarm_parameter_second)
+		{
+			if(alarm_clock[up_down_state][left_right_state] >= 60)  //加秒超出范围
+			{
+				alarm_clock[up_down_state][left_right_state] = 0;
+			}
+		}else if(left_right_state == alarm_parameter_switch)
+		{
+			if(alarm_clock[up_down_state][left_right_state] >= 2)  //加开关状态超出范围
+			{
+				alarm_clock[up_down_state][left_right_state] = 0;
+			}
+		}
+		increase_state=0;
+	}
+	if(decrease_state == 1)
+	{
+//		alarm_clock[up_down_state][left_right_state]--;
+		if(left_right_state == alarm_parameter_hour)
+		{
+			if(alarm_clock[up_down_state][left_right_state] == 0)  //减时超出范围
+			{
+				alarm_clock[up_down_state][left_right_state] = 23;
+			}
+			else alarm_clock[up_down_state][left_right_state]--;
+		}else if(left_right_state == alarm_parameter_minute)
+		{
+			if(alarm_clock[up_down_state][left_right_state] == 0)  //减分超出范围
+			{
+				alarm_clock[up_down_state][left_right_state] = 59;
+			}
+			else alarm_clock[up_down_state][left_right_state]--;
+		}else if(left_right_state == alarm_parameter_second)
+		{
+			if(alarm_clock[up_down_state][left_right_state] == 0)  //减秒超出范围
+			{
+				alarm_clock[up_down_state][left_right_state] = 59;
+			}
+			else alarm_clock[up_down_state][left_right_state]--;
+		}else if(left_right_state == alarm_parameter_switch)
+		{
+			if(alarm_clock[up_down_state][left_right_state] == 0)  //减开关状态超出范围
+			{
+				alarm_clock[up_down_state][left_right_state] = 1;
+			}
+			else alarm_clock[up_down_state][left_right_state]--;
+		}
+		decrease_state=0;
 	}
 }

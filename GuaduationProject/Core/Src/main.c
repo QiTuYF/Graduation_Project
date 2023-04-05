@@ -127,9 +127,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	printf("alarm: %d:%d:%d\r\n",alarm_clock[0][0],alarm_clock[0][1],alarm_clock[0][2]);
-	DS1302_Print_Time();
-	DHT11();
+
     /* USER CODE BEGIN 3 */
 	
 	

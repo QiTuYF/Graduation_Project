@@ -47,6 +47,10 @@ extern "C" {
 #define Read_increase HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14)
 //读-按键
 #define Read_decrease HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15)
+//设置界面上下切换按键
+#define Set_up_down HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3)
+//设置界面左右切换按键
+#define Set_left_right HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4)
 /* USER CODE END Private defines */
 
 void MX_GPIO_Init(void);

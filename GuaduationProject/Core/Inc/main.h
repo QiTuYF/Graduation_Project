@@ -73,6 +73,10 @@ void Error_Handler(void);
 #define key_increase_GPIO_Port GPIOB
 #define key_interface_Pin GPIO_PIN_15
 #define key_interface_GPIO_Port GPIOB
+#define key_up_down_Pin GPIO_PIN_3
+#define key_up_down_GPIO_Port GPIOB
+#define key_left_right_Pin GPIO_PIN_4
+#define key_left_right_GPIO_Port GPIOB
 #define DATA_DHT11_Pin GPIO_PIN_9
 #define DATA_DHT11_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */

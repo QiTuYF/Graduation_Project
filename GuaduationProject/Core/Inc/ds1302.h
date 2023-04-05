@@ -28,6 +28,10 @@
 
 #define alarm_count_max 3 //闹钟最大数
 #define alarm_parameter_max 4  //闹钟最大参数：如、时、分、秒、开启或关闭
+#define alarm_parameter_hour 0  //闹钟参数中时所在数组位置宏定义
+#define alarm_parameter_minute 1  //闹钟参数中分所在数组位置宏定义
+#define alarm_parameter_second 2  //闹钟参数中秒所在数组位置宏定义
+#define alarm_parameter_switch 3  //闹钟参数中开关状态所在数组位置宏定义
  
 #define RST_L     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_RESET)
 #define RST_H     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_SET)
@@ -58,5 +62,6 @@ timeNow_t DS1302_Read_Time(void);
 void DS1302_Print_Time(void);
 void Show_time(void);
 void Set_alarm(void);
+void Set_alarm_time(void);
  
 #endif
