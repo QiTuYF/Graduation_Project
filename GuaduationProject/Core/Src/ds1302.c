@@ -11,7 +11,7 @@ extern uint8_t left_right_state;
 
 uint32_t alarm_clock[alarm_count_max][alarm_parameter_max]=
 {
-	{21,33,50,1},
+	{21,33,50,0},
 	{21,33,55,0},
 };
 

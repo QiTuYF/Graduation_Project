@@ -12,8 +12,8 @@ extern uint8_t left_right_state;
 
 uint32_t humiture_threshold_value[humiture_count_max][humiture_parameter_max]=
 {
-	{0,50,1},
-	{20,90,1},
+	{0,50,0},
+	{20,90,0},
 };
 
 extern UART_HandleTypeDef huart1;

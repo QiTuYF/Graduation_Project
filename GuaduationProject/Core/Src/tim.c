@@ -122,6 +122,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 //			}	
 //		}
 		treatment_tim_one();
+		treatment_tim_two();
 	}
 }
 /* USER CODE END 1 */
