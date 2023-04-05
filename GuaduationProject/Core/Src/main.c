@@ -133,6 +133,8 @@ int main(void)
 	
 //	OLED_ShowString(0,0,(uint8_t *)"diploma project",16);
 	
+	DS1302_Print_Time();
+	DHT11();
 	
 	key_scan();
 	

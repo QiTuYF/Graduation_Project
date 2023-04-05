@@ -21,7 +21,8 @@
 #include "tim.h"
 
 /* USER CODE BEGIN 0 */
-
+//uint8_t times=0;
+//extern uint8_t interface_state;
 /* USER CODE END 0 */
 
 TIM_HandleTypeDef htim1;
@@ -111,7 +112,15 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim == &htim1)
-	{
+	{			
+//		if(interface_state ==3)
+//		{
+//			times++;
+//			if(times == 20)
+//			{
+//				OLED_Clear();
+//			}	
+//		}
 		treatment_tim_one();
 	}
 }

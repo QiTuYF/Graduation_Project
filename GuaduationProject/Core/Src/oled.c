@@ -123,20 +123,19 @@ void OLED_ShowChar(uint8_t x,uint8_t y,uint8_t chr,uint8_t Char_Size)
 		c=chr-' ';//得到偏移后的值			
 		if(x>128-1){x=0;y=y+2;}
 		if(Char_Size ==16)
-			{
+		{
 			OLED_Set_Pos(x,y);	
 			for(i=0;i<8;i++)
 			OLED_WR_DATA(F8X16[c*16+i]);
 			OLED_Set_Pos(x,y+1);
 			for(i=0;i<8;i++)
 			OLED_WR_DATA(F8X16[c*16+i+8]);
-			}
-			else {	
-				OLED_Set_Pos(x,y);
-				for(i=0;i<6;i++)
-				OLED_WR_DATA(F6x8[c][i]);
-				
-			}
+		}else {	
+			OLED_Set_Pos(x,y);
+			for(i=0;i<6;i++)
+			OLED_WR_DATA(F6x8[c][i]);
+			
+		}
 }
  
 //显示一个字符号串

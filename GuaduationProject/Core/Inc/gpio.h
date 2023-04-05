@@ -42,7 +42,7 @@ extern "C" {
 //读界面切换按键
 #define Read_interface HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)
 //闹钟设置按键
-#define Read_alarm_set HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)
+#define Read_alarmOrhumiture_set HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)
 //读+按键
 #define Read_increase HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14)
 //读-按键

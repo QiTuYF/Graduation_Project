@@ -7,6 +7,7 @@ extern uint32_t second;
 
 uint8_t key_state=1; //按键状态
 uint8_t interface_state=1;  //页面状态
+uint8_t interface_setalarmOrhumiture_state=0; //设置参数页面，为闹钟设置或温湿度阈值设置
 uint8_t increase_state=0;
 uint8_t decrease_state=0;
 uint8_t up_down_state=0;
@@ -32,14 +33,24 @@ void key_scan(void)
 			//
 		}
 	}
-	if(0 == Read_alarm_set)
+	if(0 == Read_alarmOrhumiture_set)  //Read_alarmOrhumiture_set为温湿度或闹钟设置页面切换按键状态
 	{
 		HAL_Delay(2);
-		if(0 == Read_alarm_set)
+		if(0 == Read_alarmOrhumiture_set)
 		{
-			while(0 == Read_alarm_set);
-			//
-			//
+			while(0 == Read_alarmOrhumiture_set);
+			OLED_Clear();
+			if(interface_state == 3) //在设置页面下按键才有效
+			{
+				up_down_state=0;
+				left_right_state=0;
+				interface_setalarmOrhumiture_state++;
+				if(interface_setalarmOrhumiture_state>=2)
+				{
+					interface_setalarmOrhumiture_state=0;
+				}
+			}
+			
 		}
 	}
 	if(0 == Read_increase)
@@ -77,10 +88,20 @@ void key_scan(void)
 			if(interface_state == 3) //在设置页面下按键才有效
 			{
 				up_down_state++;
-				if(up_down_state >= alarm_count_max)
+				if(interface_setalarmOrhumiture_state ==0) //对闹钟操作
 				{
-					up_down_state=0;
-				}			
+					if(up_down_state >= alarm_count_max)
+					{
+						up_down_state=0;
+					}
+				}else if(interface_setalarmOrhumiture_state ==1){  //对温湿度阈值操作
+				
+					if(up_down_state >= humiture_count_max)
+					{
+						up_down_state=0;
+					}
+				}
+								
 			}
 			
 		}
@@ -94,10 +115,19 @@ void key_scan(void)
 			if(interface_state == 3) //在设置页面下按键才有效
 			{
 				left_right_state++;
-				if(left_right_state >= alarm_parameter_max)
+				
+				if(interface_setalarmOrhumiture_state ==0) //对闹钟操作
 				{
-					left_right_state=0;
-				}
+					if(left_right_state >= alarm_parameter_max)
+					{
+						left_right_state=0;
+					}
+				}else if(interface_setalarmOrhumiture_state ==1){  //对温湿度阈值操作			
+					if(left_right_state >= humiture_parameter_max)
+					{
+						left_right_state=0;
+					}
+				}												
 			}			
 		}
 	}
@@ -123,13 +153,20 @@ void key_state_response(void)
 		else if(interface_state == 2)   //在OLED上显示温度湿度
 		{
 			//串口打印DHT11是否正常
-			DHT11();
+//			DHT11();
 			//在OLED上显示温度湿度
 			Show_temprature_humydity();
 		}
-		else if(interface_state == 3)   //设置闹钟数据
+		else if(interface_state == 3)   //设置闹钟或者温湿度阈值数据
 		{
-			Set_alarm();//显示所有闹钟数据
+			if(interface_setalarmOrhumiture_state == 0)
+			{
+				Set_alarm();//显示所有闹钟数据并且能够设置闹钟
+			}
+			else if(interface_setalarmOrhumiture_state == 1)
+			{
+				set_humiture();//显示温湿度阈值数据并且能够设置温湿度阈值
+			}
 		}
 	}
 }

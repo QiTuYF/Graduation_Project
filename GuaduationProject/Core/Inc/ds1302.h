@@ -32,6 +32,7 @@
 #define alarm_parameter_minute 1  //闹钟参数中分所在数组位置宏定义
 #define alarm_parameter_second 2  //闹钟参数中秒所在数组位置宏定义
 #define alarm_parameter_switch 3  //闹钟参数中开关状态所在数组位置宏定义
+#define oled_alram_line (2*i+2)  //oled在参数设置页面显示的时间行
  
 #define RST_L     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_RESET)
 #define RST_H     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_SET)

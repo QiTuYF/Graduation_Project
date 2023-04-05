@@ -197,12 +197,13 @@ void DS1302_Print_Time(void)
 	minute=timeNow.minute/16*10+timeNow.minute%16;
 	second=timeNow.second/16*10+timeNow.second%16;
 	week=timeNow.week/16*10+timeNow.week%16;
+	printf("%d-%d-%d %d:%d:%d ÐÇÆÚ%d\r\n",year,month,day,hour,minute,second,week);
 }
 
 void Sprintf_time(void)
 {
 //	printf("%d-%d-%02d %d:%02d:%02d ÐÇÆÚ%d\r\n",year,month,day,hour,minute,second,week);
-	printf("%d-%d-%d %d:%d:%d ÐÇÆÚ%d\r\n",year,month,day,hour,minute,second,week);
+	
 	memset(yea,0,sizeof(yea));
 	memset(mont,0,sizeof(mont));
 	memset(dayy,0,sizeof(dayy));
@@ -230,7 +231,7 @@ void Sprintf_time(void)
 
 void Show_time(void)
 {
-	DS1302_Print_Time();
+//	DS1302_Print_Time();
 	Sprintf_time();
 	//	OLED_ShowString(0,6,(uint8_t *)"Time:",16);      //ÏÔÊ¾Ê±¼ä
 //	OLED_ShowCHinese(0,6,11);   //ÏÔÊ¾Ê±¼ä
@@ -281,25 +282,25 @@ void Set_alarm(void)
 	for(i=0; i<alarm_count_max; i++)
 	{
 		memset(alarm_minute,0,sizeof(2));
-		sprintf(alarm_minute,"%02d",alarm_clock[i][1]);
+		sprintf(alarm_minute,"%02d",alarm_clock[i][alarm_parameter_minute]);
 		memset(alarm_second,0,sizeof(2));
-		sprintf(alarm_second,"%02d",alarm_clock[i][2]);
+		sprintf(alarm_second,"%02d",alarm_clock[i][alarm_parameter_second]);
 
-		OLED_ShowNum(0,2*(i+1),(unsigned int)i+1,2,16); //ÄÖÖÓÐòºÅ
-		OLED_ShowNum(24,2*(i+1),alarm_clock[i][0],2,16); //ÄÖÖÓÊ±
-		OLED_ShowString(40,2*(i+1),(uint8_t *)":",16);
-		OLED_ShowString(48,2*(i+1),(uint8_t *)alarm_minute,16);  //ÄÖÖÓ·Ö
-//		OLED_ShowNum(48,2*(i+1),alarm_clock[i][1],2,16);
-		OLED_ShowString(64,2*(i+1),(uint8_t *)":",16);
-		OLED_ShowString(72,2*(i+1),(uint8_t *)alarm_second,16);  //ÄÖÖÓÃë
-//		OLED_ShowNum(72,2*(i+1),alarm_clock[i][2],2,16);  //ÄÖÖÓÃë
-		if(alarm_clock[i][3] == 0)
+		OLED_ShowNum(0,oled_alram_line,(unsigned int)i+1,2,16); //ÄÖÖÓÐòºÅ
+		OLED_ShowNum(24,oled_alram_line,alarm_clock[i][0],2,16); //ÄÖÖÓÊ±
+		OLED_ShowString(40,oled_alram_line,(uint8_t *)":",16);
+		OLED_ShowString(48,oled_alram_line,(uint8_t *)alarm_minute,16);  //ÄÖÖÓ·Ö
+//		OLED_ShowNum(48,oled_alram_line,alarm_clock[i][1],2,16);
+		OLED_ShowString(64,oled_alram_line,(uint8_t *)":",16);
+		OLED_ShowString(72,oled_alram_line,(uint8_t *)alarm_second,16);  //ÄÖÖÓÃë
+//		OLED_ShowNum(72,oled_alram_line,alarm_clock[i][2],2,16);  //ÄÖÖÓÃë
+		if(alarm_clock[i][alarm_parameter_switch] == 0)  //¿ªÆô»ò¹Ø±Õ
 		{
-			OLED_ShowCHinese(96,2*(i+1),26);
-			OLED_ShowCHinese(112,2*(i+1),27);
-		}else if(alarm_clock[i][3] == 1){
-			OLED_ShowCHinese(96,2*(i+1),24);
-			OLED_ShowCHinese(112,2*(i+1),25);
+			OLED_ShowCHinese(96,oled_alram_line,26);
+			OLED_ShowCHinese(112,oled_alram_line,27);
+		}else if(alarm_clock[i][alarm_parameter_switch] == 1){
+			OLED_ShowCHinese(96,oled_alram_line,24);
+			OLED_ShowCHinese(112,oled_alram_line,25);
 		}
 	}
 	Set_alarm_time();
