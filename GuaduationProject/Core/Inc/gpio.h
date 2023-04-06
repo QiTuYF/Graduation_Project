@@ -51,6 +51,8 @@ extern "C" {
 #define Set_up_down HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3)
 //设置界面左右切换按键
 #define Set_left_right HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4)
+//设置保存闹钟设置到flash中
+#define Set_save_flash HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5)
 /* USER CODE END Private defines */
 
 void MX_GPIO_Init(void);

@@ -12,13 +12,12 @@ uint8_t increase_state=0;
 uint8_t decrease_state=0;
 uint8_t up_down_state=0;
 uint8_t left_right_state=0;
+uint8_t save_flash_state=0,save_flash_times=0;
+
+extern uint32_t alarm_clock[alarm_count_max][alarm_parameter_max];
 
 void key_scan(void)
 {
-//	BUZZ_ON;
-//	HAL_Delay(50);
-//	BUZZ_OFF;
-//	HAL_Delay(50);
 	if(0 == Read_interface)   //Read_interface为读界面切换按键状态
 	{
 		HAL_Delay(2);
@@ -131,6 +130,15 @@ void key_scan(void)
 			}			
 		}
 	}
+	if(0 == Set_save_flash)
+	{
+		HAL_Delay(2);
+		if(0 == Set_save_flash)
+		{
+			while(0 == Set_save_flash);
+			save_flash_state=1;
+		}
+	}		
 	
 }
 
@@ -160,7 +168,15 @@ void key_state_response(void)
 		else if(interface_state == 3)   //设置闹钟或者温湿度阈值数据
 		{
 			if(interface_setalarmOrhumiture_state == 0)
-			{
+			{	
+				if(save_flash_state == 1)
+				{
+					save_flash_state=0;
+					save_flash_times++;
+					OLED_ShowNum(104,0,(unsigned int)save_flash_times,3,16);
+					STMFLASH_Write(FLASH_SAVE_ADDR,(uint16_t *)alarm_clock,sizeof(alarm_clock));//第一次写读
+				}
+				OLED_ShowNum(104,0,(unsigned int)save_flash_times,3,16);
 				Set_alarm();//显示所有闹钟数据并且能够设置闹钟
 			}
 			else if(interface_setalarmOrhumiture_state == 1)

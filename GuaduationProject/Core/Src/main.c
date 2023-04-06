@@ -31,6 +31,7 @@
 #include "ds1302.h"
 #include "stmflash.h"
 #include "key.h"
+#include "string.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -117,12 +118,9 @@ int main(void)
 		DS1302_Write_Register(0xc0,1);
 	}
 		
-//	OLED_ShowString(0,0,(uint8_t *)"Welcome to my:",16);	
-//	OLED_ShowString(0,3,(uint8_t *)"diploma project",16);
-//	HAL_Delay(3000);
-//	OLED_Clear();
-	
-	
+
+//	STMFLASH_Write(FLASH_SAVE_ADDR,(uint16_t *)alarm_clock,sizeof(alarm_clock));
+	STMFLASH_Read(FLASH_SAVE_ADDR,(u16*)alarm_clock,sizeof(alarm_clock));	
 
   while (1)
   {

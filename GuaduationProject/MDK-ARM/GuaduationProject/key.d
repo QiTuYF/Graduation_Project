@@ -37,3 +37,4 @@ guaduationproject\key.o: ../Core/Inc/oled.h
 guaduationproject\key.o: ../Core/Inc/ds1302.h
 guaduationproject\key.o: D:\Directory\keil5\directory\MDKDir\ARM\ARMCC\Bin\..\include\string.h
 guaduationproject\key.o: ../Core/Inc/dht11.h
+guaduationproject\key.o: ../Core/Inc/stmflash.h

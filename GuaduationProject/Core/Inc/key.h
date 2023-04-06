@@ -10,6 +10,8 @@
 #include "oled.h"
 #include "ds1302.h"
 #include "dht11.h"
+#include "stmflash.h"
+#include "string.h"
 /* Private function prototypes -----------------------------------------------*/
 
 #define interface_state_max 3 //最大页面数

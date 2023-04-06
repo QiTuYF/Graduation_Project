@@ -39,3 +39,4 @@ guaduationproject\tim.o: ../Core/Inc/oled.h
 guaduationproject\tim.o: ../Core/Inc/ds1302.h
 guaduationproject\tim.o: D:\Directory\keil5\directory\MDKDir\ARM\ARMCC\Bin\..\include\string.h
 guaduationproject\tim.o: ../Core/Inc/dht11.h
+guaduationproject\tim.o: ../Core/Inc/stmflash.h

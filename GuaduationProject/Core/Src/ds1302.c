@@ -9,11 +9,16 @@ extern uint8_t decrease_state;
 extern uint8_t up_down_state;
 extern uint8_t left_right_state; 
 
-uint32_t alarm_clock[alarm_count_max][alarm_parameter_max]=
-{
-	{0,07,40,0},
-	{21,33,55,0},
-};
+
+//uint32_t alarm_clock[alarm_count_max][alarm_parameter_max];
+uint32_t alarm_clock[alarm_count_max][alarm_parameter_max]
+;
+//=
+//{
+//	{0,32,10,0},
+//	{21,33,55,0},
+//	{0,33,55,0},
+//};
 
 
 static void DS1302_Data_Write_Init(void)
