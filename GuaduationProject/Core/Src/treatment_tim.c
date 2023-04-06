@@ -6,8 +6,8 @@ extern double temperature;
 extern uint32_t humydity;
 void treatment_tim_one(void)
 {
-	uint8_t i=0,alarm_flag=1;
-	for(i=0; i<=alarm_count_max; i++)
+	uint8_t i=0,flag_one=0;
+	for(i=0; i<alarm_count_max; i++)
 	{
 		if(alarm_clock[i][alarm_parameter_hour] == hour)
 		{
@@ -16,43 +16,46 @@ void treatment_tim_one(void)
 				if(alarm_clock[i][alarm_parameter_second] == second)
 				{
 					if(alarm_clock[i][alarm_parameter_switch] == 1)
-					{
-						BUZZ_ON;
-						alarm_flag=0;					
-					}
-					
+					{						
+						flag_one=1;						
+						break;	
+					}						
 				}
 			}
-		}else{
-			if(alarm_flag == 1)
-			BUZZ_OFF;
 		}
 	}
-	
+	if(flag_one == 1)
+	{
+		BUZZ_ON;
+	}else{
+		BUZZ_OFF;
+	}	
 }
 
 void treatment_tim_two(void)
 {
-	uint8_t alarm_flag=1;
+	uint8_t flag_two=0;
 	if( temperature > humiture_threshold_value[temprature_parameter][humiture_parameter_upper]
 	||  temperature < humiture_threshold_value[temprature_parameter][humiture_parameter_lower]		   
 	){
 		if(humiture_threshold_value[temprature_parameter][humiture_parameter_switch]== 1 )
 		{
-			BUZZ_ON;
-			alarm_flag=0;
+			flag_two = 1;			
 		}
 		
-	}else if( humydity > humiture_threshold_value[humidity_parameter][humiture_parameter_upper]
-	      ||  humydity < humiture_threshold_value[humidity_parameter][humiture_parameter_lower]		   
+	}
+	if( humydity > humiture_threshold_value[humidity_parameter][humiture_parameter_upper]
+	||  humydity < humiture_threshold_value[humidity_parameter][humiture_parameter_lower]		   
 	){
 		if(humiture_threshold_value[humidity_parameter][humiture_parameter_switch]== 1 )
 		{
-			BUZZ_ON;
-			alarm_flag=0;
+			flag_two =1;		
 		}
+	}
+	if(flag_two == 1)
+	{
+		BUZZ_ON;
 	}else{
-		if(alarm_flag == 1)
 		BUZZ_OFF;
 	}
 }

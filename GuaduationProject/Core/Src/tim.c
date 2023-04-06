@@ -21,7 +21,7 @@
 #include "tim.h"
 
 /* USER CODE BEGIN 0 */
-//uint8_t times=0;
+uint8_t times=0;
 //extern uint8_t interface_state;
 /* USER CODE END 0 */
 
@@ -44,7 +44,7 @@ void MX_TIM1_Init(void)
   htim1.Instance = TIM1;
   htim1.Init.Prescaler = 7199;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 4999;
+  htim1.Init.Period = 499;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
@@ -121,8 +121,17 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 //				OLED_Clear();
 //			}	
 //		}
-		treatment_tim_one();
-		treatment_tim_two();
+		times++;
+		if(times%2 == 1)
+		{
+			treatment_tim_one();
+		}else if(times%2 == 0){
+			treatment_tim_two();
+		} 
+		if(times==2)
+		{
+			times=0;
+		}						
 	}
 }
 /* USER CODE END 1 */

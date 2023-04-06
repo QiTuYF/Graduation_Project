@@ -14,7 +14,7 @@
 #define DHT11_READ_IO   HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_9)                                                          //  DHT11 GPIO定义
 
 #define humiture_count_max 2 //温湿度种类数：就温度和湿度两种
-#define humiture_parameter_max 3  //温湿度阈值：上限和下限
+#define humiture_parameter_max 3  //温湿度阈值上限和下限,开关
 #define temprature_parameter 0  //温度阈值参数所在行位置
 #define humidity_parameter 1  //湿度阈值参数所在行位置
 #define humiture_parameter_lower 0  //温湿度参数中下限所在数组列位置
