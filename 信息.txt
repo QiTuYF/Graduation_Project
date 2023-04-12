@@ -21,13 +21,13 @@ PA9：Tx
 PA10：Rx
 
 按键：上拉输入，一端接地，一端接IO口
-PB12：界面切换
-PB13：闹钟设置
-PB14：加
-PB15：减
-PB3：  当前页面上下选择
-PB4：  当前页面左右选择
-PB5：  保存闹钟配置上传至flash
+PB12：界面切换	key_interface
+PB13：参数设置界面切换  	key_parameter_set
+PB14：加		key_increase
+PB15：减		key_decrease
+PB3：  当前页面上下选择	key_up_down
+PB4：  当前页面左右选择	key_left_right
+PB5：  保存闹钟配置上传至flash	key_save_flash
 
 蜂鸣器：
 PB11：蜂鸣器模块I/O口

@@ -231,7 +231,7 @@ void Sprintf_time(void)
 	sprintf(sec,"%02d",second);
 	sprintf(wee,"%d",week);
 	
-	printf("\r\n%s月\r\n",mont);
+//	printf("\r\n%s月\r\n",mont);
 }
 
 void Show_time(void)
@@ -258,7 +258,7 @@ void Show_time(void)
 	OLED_ShowString(56,3,(uint8_t *)mont,16); //月：如3
 	OLED_ShowCHinese(72,3,16); //月
 	
-	printf("%s日\r\n",dayy);
+//	printf("%s日\r\n",dayy);
 	OLED_ShowString(96,3,(uint8_t *)dayy,16); //日：如31
 	OLED_ShowCHinese(112,3,15); //日
 	
