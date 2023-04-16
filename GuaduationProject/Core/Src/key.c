@@ -174,7 +174,7 @@ void key_state_response(void)
 					save_flash_state=0;
 					save_flash_times++;
 					OLED_ShowNum(104,0,(unsigned int)save_flash_times,3,16);
-					STMFLASH_Write(FLASH_SAVE_ADDR,(uint16_t *)alarm_clock,sizeof(alarm_clock));//第一次写读
+					STMFLASH_Write(FLASH_SAVE_ADDR,(uint16_t *)alarm_clock,sizeof(alarm_clock));//写
 				}
 				OLED_ShowNum(104,0,(unsigned int)save_flash_times,3,16);
 				Set_alarm();//显示所有闹钟数据并且能够设置闹钟
