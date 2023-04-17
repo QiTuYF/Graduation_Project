@@ -9,21 +9,43 @@ void treatment_tim_one(void)
 	uint8_t i=0,flag_one=0;
 	for(i=0; i<alarm_count_max; i++)
 	{
-		if(alarm_clock[i][alarm_parameter_hour] == hour)
+		if(alarm_clock[i][alarm_parameter_switch] == 1)
 		{
-			if(alarm_clock[i][alarm_parameter_minute] == minute)
+			if(alarm_clock[i][alarm_parameter_hour] == hour)
 			{
-				if(alarm_clock[i][alarm_parameter_second] == second)
+				if(alarm_clock[i][alarm_parameter_minute] == minute)
 				{
-					if(alarm_clock[i][alarm_parameter_switch] == 1)
-					{						
-						flag_one=1;						
-						break;	
-					}						
+					if(alarm_clock[i][alarm_parameter_second] == second)
+					{
+												
+							flag_one=1;						
+							break;	
+												
+					}
 				}
 			}
 		}
 	}
+	
+	if( temperature > humiture_threshold_value[temprature_parameter][humiture_parameter_upper]
+	||  temperature < humiture_threshold_value[temprature_parameter][humiture_parameter_lower]		   
+	){
+		if(humiture_threshold_value[temprature_parameter][humiture_parameter_switch]== 1 )
+		{
+			flag_one = 1;			
+		}
+		
+	}
+	if( humydity > humiture_threshold_value[humidity_parameter][humiture_parameter_upper]
+	||  humydity < humiture_threshold_value[humidity_parameter][humiture_parameter_lower]		   
+	){
+		if(humiture_threshold_value[humidity_parameter][humiture_parameter_switch]== 1 )
+		{
+			flag_one =1;		
+		}
+	}
+	
+	
 	if(flag_one == 1)
 	{
 		BUZZ_ON;

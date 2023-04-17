@@ -10,9 +10,8 @@ extern uint8_t up_down_state;
 extern uint8_t left_right_state; 
 
 
+int alarm_clock[alarm_count_max][alarm_parameter_max];
 //uint32_t alarm_clock[alarm_count_max][alarm_parameter_max];
-uint32_t alarm_clock[alarm_count_max][alarm_parameter_max]
-;
 //=
 //{
 //	{0,32,10,0},
@@ -348,28 +347,28 @@ void Set_alarm_time(void)
 //		alarm_clock[up_down_state][left_right_state]--;
 		if(left_right_state == alarm_parameter_hour)
 		{
-			if(alarm_clock[up_down_state][left_right_state] == 0)  //¼õÊ±³¬³ö·¶Î§
+			if(alarm_clock[up_down_state][left_right_state] <= 0)  //¼õÊ±³¬³ö·¶Î§
 			{
 				alarm_clock[up_down_state][left_right_state] = 23;
 			}
 			else alarm_clock[up_down_state][left_right_state]--;
 		}else if(left_right_state == alarm_parameter_minute)
 		{
-			if(alarm_clock[up_down_state][left_right_state] == 0)  //¼õ·Ö³¬³ö·¶Î§
+			if(alarm_clock[up_down_state][left_right_state] <= 0)  //¼õ·Ö³¬³ö·¶Î§
 			{
 				alarm_clock[up_down_state][left_right_state] = 59;
 			}
 			else alarm_clock[up_down_state][left_right_state]--;
 		}else if(left_right_state == alarm_parameter_second)
 		{
-			if(alarm_clock[up_down_state][left_right_state] == 0)  //¼õÃë³¬³ö·¶Î§
+			if(alarm_clock[up_down_state][left_right_state] <= 0)  //¼õÃë³¬³ö·¶Î§
 			{
 				alarm_clock[up_down_state][left_right_state] = 59;
 			}
 			else alarm_clock[up_down_state][left_right_state]--;
 		}else if(left_right_state == alarm_parameter_switch)
 		{
-			if(alarm_clock[up_down_state][left_right_state] == 0)  //¼õ¿ª¹Ø×´Ì¬³¬³ö·¶Î§
+			if(alarm_clock[up_down_state][left_right_state] <= 0)  //¼õ¿ª¹Ø×´Ì¬³¬³ö·¶Î§
 			{
 				alarm_clock[up_down_state][left_right_state] = 1;
 			}

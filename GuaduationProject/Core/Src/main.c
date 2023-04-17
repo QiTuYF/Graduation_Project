@@ -100,16 +100,19 @@ int main(void)
   MX_USART1_UART_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start_IT(&htim1);  //使能定时器1
+  BUZZ_ON;
+  HAL_Delay(400);
+  BUZZ_OFF;
+  
   OLED_Init();
   OLED_Clear();
+  HAL_TIM_Base_Start_IT(&htim1);  //使能定时器1
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   //DS1302是否写入过时间判断标志，如果写入过就不再写入了
-//    DS1302_Set_Time(0x23,0x04,0x04,0x13,0x20,0x13,0x10);
-//	DS1302_Set_Time(0x23,0x07,0x12,0x31,0x23,0x59,0x50);
+//    DS1302_Set_Time(0x23,0x04,0x04,0x17,0x20,0x39,0x10);
 	uint8_t ds1302_write_flag;
 	ds1302_write_flag = DS1302_Read_Register(0xc0);
 	if(ds1302_write_flag == 0)
@@ -117,11 +120,11 @@ int main(void)
 		DS1302_Set_Time(0x23,0x01,0x03,0x27,0x21,0x50,0x20);
 		DS1302_Write_Register(0xc0,1);
 	}
-		
-
+	
+	
 //	STMFLASH_Write(FLASH_SAVE_ADDR,(uint16_t *)alarm_clock,sizeof(alarm_clock));
 	STMFLASH_Read(FLASH_SAVE_ADDR,(u16*)alarm_clock,sizeof(alarm_clock));	
-
+	
   while (1)
   {
     /* USER CODE END WHILE */
