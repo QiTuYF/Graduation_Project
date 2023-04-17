@@ -21,7 +21,7 @@
 #include "tim.h"
 
 /* USER CODE BEGIN 0 */
-uint8_t times=0;
+//uint8_t times=0;
 //extern uint8_t interface_state;
 /* USER CODE END 0 */
 
@@ -122,7 +122,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 //				OLED_Clear();
 //			}	
 //		}
-		times++;
+//		times++;
 //		if(times%2 == 1)
 //		{
 //			treatment_tim_one();
