@@ -7,7 +7,9 @@ extern uint32_t humiture_threshold_value[humiture_count_max][humiture_parameter_
 extern uint32_t hour,minute,second;
 extern double temperature; 
 extern uint32_t humydity;
+const uint8_t lamp_min=0,lamp_max=1;
 
+unsigned char lamp[2]={6,20};
 
 void treatment_tim_one(void)
 {
@@ -62,14 +64,15 @@ void treatment_tim_one(void)
 void treatment_tim_two(void)
 {
 		times++;
-		if(!Read_sound)
+		if(hour<=lamp[lamp_min] || hour>=lamp[lamp_max])
 		{
-			LED_ON;			
-		}
-		else if(Read_sound && times==80)
-		{
-			LED_OFF;
-			times=0;
+			if(!Read_sound)
+			{
+				LED_ON;			
+			}else if(Read_sound && times==80){
+				LED_OFF;
+				times=0;
+			}
 		}
 }
 

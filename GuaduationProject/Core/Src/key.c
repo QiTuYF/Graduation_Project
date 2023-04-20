@@ -20,17 +20,14 @@ void key_scan(void)
 {
 	if(0 == Read_interface)   //Read_interface为读界面切换按键状态
 	{
-		//		delay_ms(2);
-//			delay_ms(2);
+		//		delay_ms(2);		
 		if(0 == Read_interface)
 		{
 			while(0 == Read_interface);
 			OLED_Clear();
 			key_state = 1;
 			interface_state++;
-			if(interface_state > interface_state_max)  interface_state=1;
-			//
-			//
+			if(interface_state > interface_state_max)  interface_state=1;			
 		}
 	}
 	if(0 == Read_alarmOrhumiture_set)  //Read_alarmOrhumiture_set为温湿度或闹钟设置页面切换按键状态
