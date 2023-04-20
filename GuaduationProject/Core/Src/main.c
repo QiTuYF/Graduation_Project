@@ -112,7 +112,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   //DS1302是否写入过时间判断标志，如果写入过就不再写入了
-//    DS1302_Set_Time(0x23,0x01,0x04,0x17,0x22,0x00,0x10);
+//    DS1302_Set_Time(0x23,0x01,0x04,0x19,0x15,0x11,0x00);
 	uint8_t ds1302_write_flag;
 	ds1302_write_flag = DS1302_Read_Register(0xc0);
 	if(ds1302_write_flag == 0)
@@ -137,9 +137,9 @@ int main(void)
 	DS1302_Print_Time();
 	DHT11();
 	
-	key_scan();
+	key_scan();  //扫描按键，是否有按键按下
 	
-	key_state_response(); //按键状态响应
+	key_state_response(); //按键状态响应,执行相应处理
   }
   /* USER CODE END 3 */
 }

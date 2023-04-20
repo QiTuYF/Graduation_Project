@@ -32,3 +32,10 @@ PB5：  保存闹钟配置上传至flash	key_save_flash
 蜂鸣器：
 PB11：蜂鸣器模块I/O口
 
+
+LED灯：
+PA11：正极
+
+声音检测传感器
+PA12：OUT
+

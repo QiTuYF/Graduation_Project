@@ -1,9 +1,14 @@
 #include "treatment_tim.h"
+
+uint8_t times=0;
+
 extern uint32_t alarm_clock[alarm_count_max][alarm_parameter_max];
 extern uint32_t humiture_threshold_value[humiture_count_max][humiture_parameter_max];
 extern uint32_t hour,minute,second;
 extern double temperature; 
 extern uint32_t humydity;
+
+
 void treatment_tim_one(void)
 {
 	uint8_t i=0,flag_one=0;
@@ -56,29 +61,15 @@ void treatment_tim_one(void)
 
 void treatment_tim_two(void)
 {
-	uint8_t flag_two=0;
-	if( temperature > humiture_threshold_value[temprature_parameter][humiture_parameter_upper]
-	||  temperature < humiture_threshold_value[temprature_parameter][humiture_parameter_lower]		   
-	){
-		if(humiture_threshold_value[temprature_parameter][humiture_parameter_switch]== 1 )
+		times++;
+		if(!Read_sound)
 		{
-			flag_two = 1;			
+			LED_ON;			
 		}
-		
-	}
-	if( humydity > humiture_threshold_value[humidity_parameter][humiture_parameter_upper]
-	||  humydity < humiture_threshold_value[humidity_parameter][humiture_parameter_lower]		   
-	){
-		if(humiture_threshold_value[humidity_parameter][humiture_parameter_switch]== 1 )
+		else if(Read_sound && times==80)
 		{
-			flag_two =1;		
+			LED_OFF;
+			times=0;
 		}
-	}
-	if(flag_two == 1)
-	{
-		BUZZ_ON;
-	}else{
-		BUZZ_OFF;
-	}
 }
 

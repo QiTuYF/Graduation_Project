@@ -21,7 +21,7 @@
 #include "tim.h"
 
 /* USER CODE BEGIN 0 */
-//uint8_t times=0;
+
 //extern uint8_t interface_state;
 /* USER CODE END 0 */
 
@@ -44,8 +44,7 @@ void MX_TIM1_Init(void)
   htim1.Instance = TIM1;
   htim1.Init.Prescaler = 7199;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-//  htim1.Init.Period = 4999;
-  htim1.Init.Period = 999;
+  htim1.Init.Period = 499;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
@@ -113,28 +112,36 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim == &htim1)
-	{			
-//		if(interface_state ==3)
-//		{
-//			times++;
-//			if(times == 20)
-//			{
-//				OLED_Clear();
-//			}	
-//		}
-//		times++;
-//		if(times%2 == 1)
-//		{
-//			treatment_tim_one();
-//		}else if(times%2 == 0){
-//			treatment_tim_two();
-//		} 
-//		if(times==2)
-//		{
-//			times=0;
-//		}
+	{
+			
 		treatment_tim_one();
-						
+		treatment_tim_two();				
 	}
+}
+
+//微秒级的延时
+void delay_us(uint32_t delay_us)
+{    
+  volatile unsigned int num;
+  volatile unsigned int t;
+ 
+  
+  for (num = 0; num < delay_us; num++)
+  {
+    t = 11;
+    while (t != 0)
+    {
+      t--;
+    }
+  }
+}
+//毫秒级的延时
+void delay_ms(uint16_t delay_ms)
+{    
+  volatile unsigned int num;
+  for (num = 0; num < delay_ms; num++)
+  {
+    delay_us(1000);
+  }
 }
 /* USER CODE END 1 */

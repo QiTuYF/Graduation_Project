@@ -73,6 +73,10 @@ void Error_Handler(void);
 #define key_increase_GPIO_Port GPIOB
 #define key_decrease_Pin GPIO_PIN_15
 #define key_decrease_GPIO_Port GPIOB
+#define LED_IO_Pin GPIO_PIN_11
+#define LED_IO_GPIO_Port GPIOA
+#define D0_Pin GPIO_PIN_12
+#define D0_GPIO_Port GPIOA
 #define key_up_down_Pin GPIO_PIN_3
 #define key_up_down_GPIO_Port GPIOB
 #define key_left_right_Pin GPIO_PIN_4

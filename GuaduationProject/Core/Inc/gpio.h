@@ -53,6 +53,12 @@ extern "C" {
 #define Set_left_right HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4)
 //设置保存闹钟设置到flash中
 #define Set_save_flash HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5)
+//读声音检测模块电平
+#define Read_sound HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_12)
+//开启LED灯
+#define LED_ON HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET)
+//关闭LED灯
+#define LED_OFF HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_RESET)
 /* USER CODE END Private defines */
 
 void MX_GPIO_Init(void);
