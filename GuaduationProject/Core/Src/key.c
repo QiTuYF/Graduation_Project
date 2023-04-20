@@ -20,7 +20,8 @@ void key_scan(void)
 {
 	if(0 == Read_interface)   //Read_interface为读界面切换按键状态
 	{
-		HAL_Delay(2);
+		//		delay_ms(2);
+//			delay_ms(2);
 		if(0 == Read_interface)
 		{
 			while(0 == Read_interface);
@@ -34,7 +35,7 @@ void key_scan(void)
 	}
 	if(0 == Read_alarmOrhumiture_set)  //Read_alarmOrhumiture_set为温湿度或闹钟设置页面切换按键状态
 	{
-		HAL_Delay(2);
+		//		delay_ms(2);
 		if(0 == Read_alarmOrhumiture_set)
 		{
 			while(0 == Read_alarmOrhumiture_set);
@@ -54,7 +55,7 @@ void key_scan(void)
 	}
 	if(0 == Read_increase)
 	{
-		HAL_Delay(2);
+		//		delay_ms(2);
 		if(0 == Read_increase)
 		{
 			while(0 == Read_increase);
@@ -67,7 +68,7 @@ void key_scan(void)
 	}
 	if(0 == Read_decrease)
 	{
-		HAL_Delay(2);
+		//		delay_ms(2);
 		if(0 == Read_decrease)
 		{
 			while(0 == Read_decrease);
@@ -80,7 +81,7 @@ void key_scan(void)
 	}
 	if(0 == Set_up_down)
 	{
-		HAL_Delay(2);
+		//		delay_ms(2);
 		if(0 == Set_up_down)
 		{
 			while(0 == Set_up_down);
@@ -107,7 +108,7 @@ void key_scan(void)
 	}
 	if(0 == Set_left_right)
 	{
-		HAL_Delay(2);
+		//		delay_ms(2);
 		if(0 == Set_left_right)
 		{
 			while(0 == Set_left_right);
@@ -132,7 +133,7 @@ void key_scan(void)
 	}
 	if(0 == Set_save_flash)
 	{
-		HAL_Delay(2);
+		//		delay_ms(2);
 		if(0 == Set_save_flash)
 		{
 			while(0 == Set_save_flash);

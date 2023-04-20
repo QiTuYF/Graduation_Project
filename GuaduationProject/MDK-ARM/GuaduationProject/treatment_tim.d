@@ -39,3 +39,5 @@ guaduationproject\treatment_tim.o: ../Core/Inc/ds1302.h
 guaduationproject\treatment_tim.o: D:\Directory\keil5\directory\MDKDir\ARM\ARMCC\Bin\..\include\string.h
 guaduationproject\treatment_tim.o: ../Core/Inc/dht11.h
 guaduationproject\treatment_tim.o: ../Core/Inc/stmflash.h
+guaduationproject\treatment_tim.o: ../Core/Inc/tim.h
+guaduationproject\treatment_tim.o: ../Core/Inc/treatment_tim.h

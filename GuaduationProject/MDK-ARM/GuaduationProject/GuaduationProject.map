@@ -109,7 +109,6 @@ Section Cross References
     stmflash.o(i.STMFLASH_Write) refers to stmflash.o(.bss) for .bss
     stmflash.o(i.STMFLASH_Write_NoCheck) refers to stm32f1xx_hal_flash.o(i.HAL_FLASH_Program) for HAL_FLASH_Program
     key.o(i.key_scan) refers to stm32f1xx_hal_gpio.o(i.HAL_GPIO_ReadPin) for HAL_GPIO_ReadPin
-    key.o(i.key_scan) refers to stm32f1xx_hal.o(i.HAL_Delay) for HAL_Delay
     key.o(i.key_scan) refers to oled.o(i.OLED_Clear) for OLED_Clear
     key.o(i.key_scan) refers to key.o(.data) for .data
     key.o(i.key_state_response) refers to dht11.o(i.set_humiture) for set_humiture
@@ -1729,16 +1728,16 @@ Image Symbol Table
     _sputc                                   0x08003617   Thumb Code    10  printfa.o(i._sputc)
     i.fputc                                  0x08003620   Section        0  usart.o(i.fputc)
     i.key_scan                               0x08003638   Section        0  key.o(i.key_scan)
-    i.key_state_response                     0x080037fc   Section        0  key.o(i.key_state_response)
-    i.main                                   0x08003894   Section        0  main.o(i.main)
-    i.oled_pow                               0x08003918   Section        0  oled.o(i.oled_pow)
-    i.set_humiture                           0x08003928   Section        0  dht11.o(i.set_humiture)
-    i.set_humiture_threshold_value           0x08003a98   Section        0  dht11.o(i.set_humiture_threshold_value)
-    i.treatment_tim_one                      0x08003c08   Section        0  treatment_tim.o(i.treatment_tim_one)
-    i.treatment_tim_two                      0x08003cc8   Section        0  treatment_tim.o(i.treatment_tim_two)
-    .constdata                               0x08003d20   Section     3976  oled.o(.constdata)
-    .constdata                               0x08004ca8   Section       16  system_stm32f1xx.o(.constdata)
-    .constdata                               0x08004cb8   Section        8  system_stm32f1xx.o(.constdata)
+    i.key_state_response                     0x080037d0   Section        0  key.o(i.key_state_response)
+    i.main                                   0x08003868   Section        0  main.o(i.main)
+    i.oled_pow                               0x080038ec   Section        0  oled.o(i.oled_pow)
+    i.set_humiture                           0x080038fc   Section        0  dht11.o(i.set_humiture)
+    i.set_humiture_threshold_value           0x08003a6c   Section        0  dht11.o(i.set_humiture_threshold_value)
+    i.treatment_tim_one                      0x08003bdc   Section        0  treatment_tim.o(i.treatment_tim_one)
+    i.treatment_tim_two                      0x08003c9c   Section        0  treatment_tim.o(i.treatment_tim_two)
+    .constdata                               0x08003cf4   Section     3976  oled.o(.constdata)
+    .constdata                               0x08004c7c   Section       16  system_stm32f1xx.o(.constdata)
+    .constdata                               0x08004c8c   Section        8  system_stm32f1xx.o(.constdata)
     .data                                    0x20000000   Section       27  oled.o(.data)
     .data                                    0x20000020   Section       56  dht11.o(.data)
     .data                                    0x20000058   Section       65  ds1302.o(.data)
@@ -2000,21 +1999,21 @@ Image Symbol Table
     __scatterload_null                       0x08002d53   Thumb Code     2  handlers.o(i.__scatterload_null)
     __scatterload_zeroinit                   0x08002d55   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
     fputc                                    0x08003621   Thumb Code    20  usart.o(i.fputc)
-    key_scan                                 0x08003639   Thumb Code   442  key.o(i.key_scan)
-    key_state_response                       0x080037fd   Thumb Code   136  key.o(i.key_state_response)
-    main                                     0x08003895   Thumb Code   116  main.o(i.main)
-    oled_pow                                 0x08003919   Thumb Code    16  oled.o(i.oled_pow)
-    set_humiture                             0x08003929   Thumb Code   342  dht11.o(i.set_humiture)
-    set_humiture_threshold_value             0x08003a99   Thumb Code   346  dht11.o(i.set_humiture_threshold_value)
-    treatment_tim_one                        0x08003c09   Thumb Code   160  treatment_tim.o(i.treatment_tim_one)
-    treatment_tim_two                        0x08003cc9   Thumb Code    80  treatment_tim.o(i.treatment_tim_two)
-    F6x8                                     0x08003d20   Data         552  oled.o(.constdata)
-    F8X16                                    0x08003f48   Data        1504  oled.o(.constdata)
-    Hzk                                      0x08004528   Data        1920  oled.o(.constdata)
-    AHBPrescTable                            0x08004ca8   Data          16  system_stm32f1xx.o(.constdata)
-    APBPrescTable                            0x08004cb8   Data           8  system_stm32f1xx.o(.constdata)
-    Region$$Table$$Base                      0x08004cc0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08004ce0   Number         0  anon$$obj.o(Region$$Table)
+    key_scan                                 0x08003639   Thumb Code   400  key.o(i.key_scan)
+    key_state_response                       0x080037d1   Thumb Code   136  key.o(i.key_state_response)
+    main                                     0x08003869   Thumb Code   116  main.o(i.main)
+    oled_pow                                 0x080038ed   Thumb Code    16  oled.o(i.oled_pow)
+    set_humiture                             0x080038fd   Thumb Code   342  dht11.o(i.set_humiture)
+    set_humiture_threshold_value             0x08003a6d   Thumb Code   346  dht11.o(i.set_humiture_threshold_value)
+    treatment_tim_one                        0x08003bdd   Thumb Code   160  treatment_tim.o(i.treatment_tim_one)
+    treatment_tim_two                        0x08003c9d   Thumb Code    80  treatment_tim.o(i.treatment_tim_two)
+    F6x8                                     0x08003cf4   Data         552  oled.o(.constdata)
+    F8X16                                    0x08003f1c   Data        1504  oled.o(.constdata)
+    Hzk                                      0x080044fc   Data        1920  oled.o(.constdata)
+    AHBPrescTable                            0x08004c7c   Data          16  system_stm32f1xx.o(.constdata)
+    APBPrescTable                            0x08004c8c   Data           8  system_stm32f1xx.o(.constdata)
+    Region$$Table$$Base                      0x08004c94   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08004cb4   Number         0  anon$$obj.o(Region$$Table)
     CMD_Data                                 0x20000000   Data          27  oled.o(.data)
     humydi                                   0x20000020   Data           3  dht11.o(.data)
     humydity                                 0x20000024   Data           4  dht11.o(.data)
@@ -2071,9 +2070,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00004d98, Max: 0x00010000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00004d6c, Max: 0x00010000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004ce0, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004cb4, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2120,7 +2119,7 @@ Memory Map of the image
     0x08000af4   0x08000af4   0x00000054   Code   RO          313    i.DS1302_Single_Byte_Write  ds1302.o
     0x08000b48   0x08000b48   0x00000058   Code   RO          314    i.DS1302_Write_Register  ds1302.o
     0x08000ba0   0x08000ba0   0x00000002   Code   RO          742    i.DebugMon_Handler  stm32f1xx_it.o
-    0x08000ba2   0x08000ba2   0x00000004   Code   RO          527    i.Error_Handler     main.o
+    0x08000ba2   0x08000ba2   0x00000004   Code   RO          531    i.Error_Handler     main.o
     0x08000ba6   0x08000ba6   0x00000002   PAD
     0x08000ba8   0x08000ba8   0x0000001c   Code   RO         2030    i.FLASH_Program_HalfWord  stm32f1xx_hal_flash.o
     0x08000bc4   0x08000bc4   0x0000005c   Code   RO         2031    i.FLASH_SetErrorCode  stm32f1xx_hal_flash.o
@@ -2206,7 +2205,7 @@ Memory Map of the image
     0x0800297c   0x0800297c   0x00000044   Code   RO          219    i.Sprintf_temprature_humydity  dht11.o
     0x080029c0   0x080029c0   0x00000084   Code   RO          318    i.Sprintf_time      ds1302.o
     0x08002a44   0x08002a44   0x00000004   Code   RO          748    i.SysTick_Handler   stm32f1xx_it.o
-    0x08002a48   0x08002a48   0x0000005c   Code   RO          528    i.SystemClock_Config  main.o
+    0x08002a48   0x08002a48   0x0000005c   Code   RO          532    i.SystemClock_Config  main.o
     0x08002aa4   0x08002aa4   0x00000002   Code   RO         3628    i.SystemInit        system_stm32f1xx.o
     0x08002aa6   0x08002aa6   0x00000002   PAD
     0x08002aa8   0x08002aa8   0x0000000c   Code   RO          749    i.TIM1_UP_IRQHandler  stm32f1xx_it.o
@@ -2233,34 +2232,34 @@ Memory Map of the image
     0x080035e8   0x080035e8   0x0000002e   Code   RO         3912    i._printf_pre_padding  mc_w.l(printfa.o)
     0x08003616   0x08003616   0x0000000a   Code   RO         3914    i._sputc            mc_w.l(printfa.o)
     0x08003620   0x08003620   0x00000018   Code   RO          696    i.fputc             usart.o
-    0x08003638   0x08003638   0x000001c4   Code   RO          449    i.key_scan          key.o
-    0x080037fc   0x080037fc   0x00000098   Code   RO          450    i.key_state_response  key.o
-    0x08003894   0x08003894   0x00000084   Code   RO          529    i.main              main.o
-    0x08003918   0x08003918   0x00000010   Code   RO           17    i.oled_pow          oled.o
-    0x08003928   0x08003928   0x00000170   Code   RO          220    i.set_humiture      dht11.o
-    0x08003a98   0x08003a98   0x00000170   Code   RO          221    i.set_humiture_threshold_value  dht11.o
-    0x08003c08   0x08003c08   0x000000c0   Code   RO          490    i.treatment_tim_one  treatment_tim.o
-    0x08003cc8   0x08003cc8   0x00000058   Code   RO          491    i.treatment_tim_two  treatment_tim.o
-    0x08003d20   0x08003d20   0x00000f88   Data   RO           18    .constdata          oled.o
-    0x08004ca8   0x08004ca8   0x00000010   Data   RO         3629    .constdata          system_stm32f1xx.o
-    0x08004cb8   0x08004cb8   0x00000008   Data   RO         3630    .constdata          system_stm32f1xx.o
-    0x08004cc0   0x08004cc0   0x00000020   Data   RO         3972    Region$$Table       anon$$obj.o
+    0x08003638   0x08003638   0x00000198   Code   RO          449    i.key_scan          key.o
+    0x080037d0   0x080037d0   0x00000098   Code   RO          450    i.key_state_response  key.o
+    0x08003868   0x08003868   0x00000084   Code   RO          533    i.main              main.o
+    0x080038ec   0x080038ec   0x00000010   Code   RO           17    i.oled_pow          oled.o
+    0x080038fc   0x080038fc   0x00000170   Code   RO          220    i.set_humiture      dht11.o
+    0x08003a6c   0x08003a6c   0x00000170   Code   RO          221    i.set_humiture_threshold_value  dht11.o
+    0x08003bdc   0x08003bdc   0x000000c0   Code   RO          497    i.treatment_tim_one  treatment_tim.o
+    0x08003c9c   0x08003c9c   0x00000058   Code   RO          498    i.treatment_tim_two  treatment_tim.o
+    0x08003cf4   0x08003cf4   0x00000f88   Data   RO           18    .constdata          oled.o
+    0x08004c7c   0x08004c7c   0x00000010   Data   RO         3629    .constdata          system_stm32f1xx.o
+    0x08004c8c   0x08004c8c   0x00000008   Data   RO         3630    .constdata          system_stm32f1xx.o
+    0x08004c94   0x08004c94   0x00000020   Data   RO         3972    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004ce0, Size: 0x00000a08, Max: 0x00005000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004cb4, Size: 0x00000a08, Max: 0x00005000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08004ce0   0x0000001b   Data   RW           19    .data               oled.o
-    0x2000001b   0x08004cfb   0x00000005   PAD
-    0x20000020   0x08004d00   0x00000038   Data   RW          222    .data               dht11.o
-    0x20000058   0x08004d38   0x00000041   Data   RW          320    .data               ds1302.o
-    0x20000099   0x08004d79   0x00000009   Data   RW          451    .data               key.o
-    0x200000a2   0x08004d82   0x00000001   Data   RW          492    .data               treatment_tim.o
-    0x200000a3   0x08004d83   0x00000001   PAD
-    0x200000a4   0x08004d84   0x0000000c   Data   RW         1340    .data               stm32f1xx_hal.o
-    0x200000b0   0x08004d90   0x00000004   Data   RW         3631    .data               system_stm32f1xx.o
-    0x200000b4   0x08004d94   0x00000004   Data   RW         3954    .data               mc_w.l(stdout.o)
+    0x20000000   0x08004cb4   0x0000001b   Data   RW           19    .data               oled.o
+    0x2000001b   0x08004ccf   0x00000005   PAD
+    0x20000020   0x08004cd4   0x00000038   Data   RW          222    .data               dht11.o
+    0x20000058   0x08004d0c   0x00000041   Data   RW          320    .data               ds1302.o
+    0x20000099   0x08004d4d   0x00000009   Data   RW          451    .data               key.o
+    0x200000a2   0x08004d56   0x00000001   Data   RW          499    .data               treatment_tim.o
+    0x200000a3   0x08004d57   0x00000001   PAD
+    0x200000a4   0x08004d58   0x0000000c   Data   RW         1340    .data               stm32f1xx_hal.o
+    0x200000b0   0x08004d64   0x00000004   Data   RW         3631    .data               system_stm32f1xx.o
+    0x200000b4   0x08004d68   0x00000004   Data   RW         3954    .data               mc_w.l(stdout.o)
     0x200000b8        -       0x00000030   Zero   RW          319    .bss                ds1302.o
     0x200000e8        -       0x00000420   Zero   RW          403    .bss                stmflash.o
     0x20000508        -       0x00000054   Zero   RW          594    .bss                i2c.o
@@ -2281,7 +2280,7 @@ Image component sizes
       1544        122          0         65         48       8118   ds1302.o
        240         14          0          0          0        975   gpio.o
        156         26          0          0         84       1569   i2c.o
-       604         26          0          9          0       2074   key.o
+       560         24          0          9          0       2046   key.o
        228         16          0          0          0       2201   main.o
        610         34       3976         27          0     442263   oled.o
         36          8        236          0       1024        756   startup_stm32f103xb.o
@@ -2303,7 +2302,7 @@ Image component sizes
        192         24          0          0         68       2178   usart.o
 
     ----------------------------------------------------------------------
-     11600        894       4268        180       2384     555639   Object Totals
+     11556        892       4268        180       2384     555611   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         18          0          0          6          0          0   (incl. Padding)
 
@@ -2360,15 +2359,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     15412       1006       4268        184       2384     550883   Grand Totals
-     15412       1006       4268        184       2384     550883   ELF Image Totals
-     15412       1006       4268        184          0          0   ROM Totals
+     15368       1004       4268        184       2384     550855   Grand Totals
+     15368       1004       4268        184       2384     550855   ELF Image Totals
+     15368       1004       4268        184          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                19680 (  19.22kB)
+    Total RO  Size (Code + RO Data)                19636 (  19.18kB)
     Total RW  Size (RW Data + ZI Data)              2568 (   2.51kB)
-    Total ROM Size (Code + RO Data + RW Data)      19864 (  19.40kB)
+    Total ROM Size (Code + RO Data + RW Data)      19820 (  19.36kB)
 
 ==============================================================================
 

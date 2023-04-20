@@ -38,3 +38,6 @@ guaduationproject\key.o: ../Core/Inc/ds1302.h
 guaduationproject\key.o: D:\Directory\keil5\directory\MDKDir\ARM\ARMCC\Bin\..\include\string.h
 guaduationproject\key.o: ../Core/Inc/dht11.h
 guaduationproject\key.o: ../Core/Inc/stmflash.h
+guaduationproject\key.o: ../Core/Inc/tim.h
+guaduationproject\key.o: ../Core/Inc/treatment_tim.h
+guaduationproject\key.o: ../Core/Inc/key.h

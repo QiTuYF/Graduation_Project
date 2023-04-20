@@ -12,6 +12,7 @@
 #include "dht11.h"
 #include "stmflash.h"
 #include "string.h"
+#include "tim.h"
 /* Private function prototypes -----------------------------------------------*/
 
 #define interface_state_max 3 //最大页面数
